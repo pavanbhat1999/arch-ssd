@@ -9,6 +9,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround"
 Plug 'alvan/vim-closetag' "auto closing tags - web development
 Plug 'scrooloose/nerdcommenter'
+"Plug 'numToStr/Comment.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mhinz/vim-startify'
 Plug 'airblade/vim-gitgutter'
@@ -42,6 +43,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 "Plug 'lifepillar/vim-gruvbox8'
 Plug 'lifepillar/vim-solarized8'
+Plug 'arcticicestudio/nord-vim'
 "Plug 'dracula/vim', { 'as': 'dracula' }
 ""Plug 'morhetz/gruvbox'
 ""indentation guidelines

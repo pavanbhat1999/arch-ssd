@@ -17,6 +17,7 @@ nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> [g <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> ]g <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+"luafile $HOME/.config/nvim/lua/comment.lua
 luafile $HOME/.config/nvim/lua/cmp-config.lua
 luafile $HOME/.config/nvim/lua/python-lsp.lua
 luafile $HOME/.config/nvim/lua/bash-lsp.lua
