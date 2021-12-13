@@ -1,0 +1,5 @@
+[Added Associations]
+application/vnd.openxmlformats-officedocument.wordprocessingml.document=org.pwmt.zathura.desktop;
+
+[Default Applications]
+inode/directory=ranger.desktop

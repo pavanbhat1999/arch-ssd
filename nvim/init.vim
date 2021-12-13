@@ -3,7 +3,8 @@ autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
 ""-------------------------------------------------------------------------------
 source $HOME/.config/nvim/vim-scripts/plugins.vim
 ""let g:vim_json_conceal=0
-source $HOME/.config/nvim/vim-scripts/defalts.vim
+"source $HOME/.config/nvim/vim-scripts/defalts.vim
+luafile $HOME/.config/nvim/lua/defaults.lua
 source $HOME/.config/nvim/vim-scripts/color-settings.vim
 source $HOME/.config/nvim/vim-scripts/key-mappings.vim
 ""-------------------------------------------------------------------------------
@@ -17,6 +18,7 @@ nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> [g <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent> ]g <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+"luafile $HOME/.config/nvim/lua/comment.lua
 luafile $HOME/.config/nvim/lua/cmp-config.lua
 luafile $HOME/.config/nvim/lua/python-lsp.lua
 luafile $HOME/.config/nvim/lua/bash-lsp.lua

@@ -64,7 +64,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id     dmenu_run -nb '#272727' -sf '#1e1e1e' -sb '#A3AD48' -nf '#C5D71D'
+#bindsym $mod+d exec --no-startup-id     dmenu_run -nb '#272727' -sf '#1e1e1e' -sb '#A3AD48' -nf '#C5D71D'
 
 
 bindsym $mod+r exec --no-startup-id rofi -show drun -show-icons -font "Hack 18" 
