@@ -25,6 +25,6 @@ vim.opt.hidden = true
 vim.opt.updatetime = 100
 --for cross os files
 --vim.g.nofixendofline = true
---vim.api.nvim_command("set nofixendofline")
+vim.api.nvim_command("set fixendofline")
 vim.opt.scrolloff = 18
 vim.opt.signcolumn = "auto"
