@@ -11,10 +11,9 @@ vim.wo.number = true
 vim.opt.smartindent = true
 vim.opt.smartcase = true
 vim.opt.ignorecase = true
-vim.api.nvim_command("set noswapfile")
---vim.g.no_swapfile = 1
-vim.api.nvim_command("set nobackup")
---vim.g.no_backup = 1
+--vim.api.nvim_command("set noswapfile")
+vim.opt.swapfile = false
+vim.opt.backup = false
 vim.opt.undodir = ".cache/nvim/undo"
 vim.opt.undofile = true
 vim.opt.incsearch = true
@@ -28,3 +27,10 @@ vim.opt.updatetime = 100
 --vim.api.nvim_command("set nofixendofline")
 vim.opt.scrolloff = 18
 vim.opt.signcolumn = "auto"
+vim.cmd [[au BufWritePre * :%s/\s\+$//e]]
+vim.api.nvim_exec([[
+  augroup YankHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=700}
+  augroup end
+]], false)
