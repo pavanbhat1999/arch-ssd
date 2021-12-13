@@ -3,7 +3,8 @@ autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"
 ""-------------------------------------------------------------------------------
 source $HOME/.config/nvim/vim-scripts/plugins.vim
 ""let g:vim_json_conceal=0
-source $HOME/.config/nvim/vim-scripts/defalts.vim
+"source $HOME/.config/nvim/vim-scripts/defalts.vim
+luafile $HOME/.config/nvim/lua/defaults.lua
 source $HOME/.config/nvim/vim-scripts/color-settings.vim
 source $HOME/.config/nvim/vim-scripts/key-mappings.vim
 ""-------------------------------------------------------------------------------

@@ -1,5 +1,5 @@
 [netspeed]
-command=netspeed
+command= $HOME/bin/scripts/window-manager/netspeed
 interval=1
 [temparature]
 command=echo -n "🔥" && $HOME/bin/scripts/window-manager/temp

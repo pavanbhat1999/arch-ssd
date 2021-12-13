@@ -13,7 +13,7 @@ set smartcase
 set ignorecase
 set nobackup
 set noswapfile
-set undodir=~/.config/nvim/undo
+set undodir=~/.cache/nvim/undo
 set undofile
 set incsearch
 set exrc " for setting up different vimrcs "
