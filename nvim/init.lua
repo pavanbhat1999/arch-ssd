@@ -1,5 +1,5 @@
 vim.cmd[[autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"]]
-vim.cmd('source $HOME/.config/nvim/vim-scripts/plugins.vim')
+vim.cmd('source $HOME/.config/nvim/vim-scripts/plugins.vim')--TODO:Think about changing package manager
 require('defaults')
 require("color-settings")
 require("key-mappings")--TODO:Convert all mappings to lua standard

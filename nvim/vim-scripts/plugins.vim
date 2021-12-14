@@ -20,7 +20,7 @@ Plug 'junegunn/vim-easy-align'
 ""Plug 'neoclide/coc.nvim', {'branch': 'release' , 'for':'java'}
 ""Plug 'williamboman/nvim-lsp-installer'
 Plug 'neovim/nvim-lspconfig'
-"Plug 'github/copilot.vim'
+Plug 'github/copilot.vim'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
