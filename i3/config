@@ -14,15 +14,16 @@ set $mod Mod4
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:JetBrains Mono 12
+# for_window [all] title_window_icon on
 
-#for_window [class="^.*"] border pixel 1
+# for_window [class="^.*"] border normal 1
 default_border pixel 2
 hide_edge_borders smart
 #gaps outer 5
 #gaps inner 10
 smart_gaps on
 # class                 border  backgr. text    indicator child_border
-client.focused          #EB0B1D #FE1233 #ffffff #F42E42   #EC0E1C
+client.focused          #0A0405 #211C6D #ffffff #F42E42   #EC0E1C
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
@@ -67,9 +68,9 @@ bindsym $mod+Shift+q kill
 #bindsym $mod+d exec --no-startup-id     dmenu_run -nb '#272727' -sf '#1e1e1e' -sb '#A3AD48' -nf '#C5D71D'
 
 
-bindsym $mod+r exec --no-startup-id rofi -show drun -show-icons -font "Hack 18" 
-#bindsym $mod+Tab exec --no-startup-id rofi -show window -show-icons  -font "Hack 18" 
-#bindsym $mod+Shift+Tab exec --no-startup-id rofi -show windowcd -show-icons  -font "Hack 18" 
+bindsym $mod+r exec --no-startup-id rofi -show drun -show-icons -font "Hack 18"
+#bindsym $mod+Tab exec --no-startup-id rofi -show window -show-icons  -font "Hack 18"
+#bindsym $mod+Shift+Tab exec --no-startup-id rofi -show windowcd -show-icons  -font "Hack 18"
 #bindsym mod1+comma exec --no-startup-id /home/root99/.config/rofi/launchers/ribbon/launcher.sh
 #bindsym mod1+space exec --no-startup-id rofi -show combi
 #bindsym mod1+p exec  /home/root99/.config/rofi/powermenu/powermenu.sh
@@ -161,7 +162,7 @@ bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 bindsym $mod+bracketright workspace next
-bindsym $mod+bracketleft workspace prev 
+bindsym $mod+bracketleft workspace prev
 bindsym $mod+Tab workspace back_and_forth
 
 # move focused container to workspace
@@ -183,6 +184,7 @@ assign [class="Org.gnome.Nautilus"] $ws3
 #assign [title="ranger] $ws3
 assign [class="Pcmanfm"] $ws3
 assign [class="mpv"] $ws5
+for_window [class="xdman-Main"] floating enable
 # reload the configuration file
 bindsym $mod+Shift+e reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -228,8 +230,8 @@ mode "resize" {
 #exec --no-startup-id $HOME/.config/i3/wallpaper_nitrogen.sh
 #starting picom compositor for transperancy
 #Use ibhammmgva fork for blur
-#exec --no-startup-id picom --backend glx --experimental-backends --blur-method dual_kawase 
-#exec --no-startup-id picom 
+#exec --no-startup-id picom --backend glx --experimental-backends --blur-method dual_kawase
+#exec --no-startup-id picom
 #starting devilspie for vs code
 #exec --no-startup-id devilspie
 #lockscreen
@@ -247,11 +249,11 @@ mode "resize" {
 #tapping enabled touchpad
 #exec --no-startup-id xinput set-prop 16 366 1
 #exec --no-startup-id xinput set-prop 14 364 1
-#start num touchpad 
+#start num touchpad
 exec  setxkbmap -option keypad:pointerkeys
 #swap caps and esc
 #exec setxkbmap -option caps:swapescape
-#restaring the system 
+#restaring the system
 #bindsym $mod+shift+ctrl+r exec reboot
 #bindsym $mod+shift+ctrl+r exec "i3-nagbar -t warning -m 'You pressed the reboot shortcut. Do you really want to reboot i3? ' -B 'Yes, reboot' 'reboot'"
 #starting lxpolkit to run sudo to run gui
@@ -265,7 +267,7 @@ exec  setxkbmap -option keypad:pointerkeys
 #resize mode
 #bindsym $mod+r mode "resize"
 #outer gaps increase
-bindsym $mod+Ctrl+z gaps outer current plus 5 
+bindsym $mod+Ctrl+z gaps outer current plus 5
 bindsym $mod+Shift+z gaps outer current minus 5
 
 bindsym $mod+Ctrl+a gaps inner current plus 5
@@ -274,13 +276,15 @@ bindsym $mod+Shift+a gaps inner current minus 5
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-i3bar_command i3bar -t 
-#status_command i3status 
+height 35
+i3bar_command ~/Downloads/i3-4.20_features/build/i3bar -t
+# i3bar_command i3bar -t
+#status_command i3status
 #status_command /usr/local/bin/net-speed-and-brightness.sh
 #status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
 status_command i3blocks
 position top
-output primary
+# output primary
 #tray_output primary
 font pango:JetBrains Mono 12
 colors{
@@ -319,7 +323,7 @@ bindsym $mod+Pause mode "$mode_system"
 
 #starting ranger file manager
 #bindsym $mod+mod1+space exec kitty -e ranger
-#launching help a file to see shortcuts I use 
+#launching help a file to see shortcuts I use
 #
 #starting vim
 #bindsym mod1+v exec kitty -e nvim $HOME/.config/nvim/init.vim

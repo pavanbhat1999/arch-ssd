@@ -1,5 +1,7 @@
 [Added Associations]
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=org.pwmt.zathura.desktop;
+x-scheme-handler/tg=userapp-Telegram Desktop-VX2JE1.desktop;
 
 [Default Applications]
 inode/directory=ranger.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-VX2JE1.desktop

@@ -13,7 +13,7 @@ Plug 'numToStr/Comment.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mhinz/vim-startify'
 Plug 'airblade/vim-gitgutter'
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 Plug 'junegunn/vim-easy-align'
 ""-------------------------------------------------------------------------------
 ""#2 Auto Completion Plugins-----------------------------------------------------
