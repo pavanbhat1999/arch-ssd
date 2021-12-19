@@ -8,6 +8,7 @@ require('lsp/python-lsp')
 require("lsp/bash-lsp")
 require("lsp/lua-lsp")
 require("lua-line")
+require("comment")
 require("treesitter")
 --require("efm")
 -- Need port of auto command from neovim

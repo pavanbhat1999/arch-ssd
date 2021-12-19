@@ -8,12 +8,12 @@ Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround' "https://github.com/tpope/vim-surround"
 Plug 'alvan/vim-closetag' "auto closing tags - web development
-Plug 'scrooloose/nerdcommenter'
-"Plug 'numToStr/Comment.nvim'
+"Plug 'scrooloose/nerdcommenter'
+Plug 'numToStr/Comment.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mhinz/vim-startify'
 Plug 'airblade/vim-gitgutter'
-Plug 'vimwiki/vimwiki'
+" Plug 'vimwiki/vimwiki'
 Plug 'junegunn/vim-easy-align'
 ""-------------------------------------------------------------------------------
 ""#2 Auto Completion Plugins-----------------------------------------------------
