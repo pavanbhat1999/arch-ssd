@@ -50,7 +50,6 @@ require'lspconfig'.html.setup {capabilities = capabilities}
 local lspkind = require('lspkind')
 cmp.setup {
     formatting = {
-        -- Youtube: How to set up nice formatting for your sources.
         format = lspkind.cmp_format {
             with_text = true,
             menu = {

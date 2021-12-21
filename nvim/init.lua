@@ -3,6 +3,7 @@ vim.cmd('source $HOME/.config/nvim/vim-scripts/plugins.vim')--TODO:Think about c
 require('defaults')
 require("color-settings")
 require("key-mappings")--TODO:Convert all mappings to lua standard
+require("telescope-settings")
 require("cmp-config")
 require('lsp/python-lsp')
 require("lsp/bash-lsp")

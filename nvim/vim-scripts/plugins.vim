@@ -35,15 +35,15 @@ Plug 'hrsh7th/vim-vsnip-integ'
 "Plug 'golang/vscode-go'
 Plug 'rafamadriz/friendly-snippets'
 Plug 'onsails/lspkind-nvim' "icons for lsp
-Plug 'sbdchd/neoformat'
+" Plug 'sbdchd/neoformat'
 " post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 ""-------------------------------------------------------------------------------
 ""#3 color settings and look😛---------------------------------------------------
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 "Plug 'lifepillar/vim-gruvbox8'
 Plug 'lifepillar/vim-solarized8'
-Plug 'arcticicestudio/nord-vim'
+" Pslug 'arcticicestudio/nord-vim'
 "Plug 'dracula/vim', { 'as': 'dracula' }
 ""Plug 'morhetz/gruvbox'
 ""indentation guidelines
