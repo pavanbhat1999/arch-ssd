@@ -1,6 +1,6 @@
 export PATH=~/bin:$PATH
 export PATH=~/bin/CustomScripts:$PATH
-export PATH=~/bin/statusbar:$PATH
+export PATH=~/bin/statusbar-luke:$PATH
 export PATH=~/bin/mystatus:$PATH
 export PATH=$HOME/.config/npm-global:$PATH
 export XDG_CONFIG_HOME=$HOME/.config

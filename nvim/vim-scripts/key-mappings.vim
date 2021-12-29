@@ -13,21 +13,22 @@ nnoremap <leader>l :wincmd l <CR>
 "nnoremap<C-p> :Rg <CR>
 "-------------------------------------------------------------------------------
 " Using lua functions-----------------------------------------------------------
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files({hidden=true,no_ignore=false})<cr>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files({hidden=false,no_ignore=false})<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>bb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 nnoremap <leader>fs <cmd>lua require('telescope.builtin').grep_string()<cr>
 nnoremap <leader>bs <cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>
+nnoremap <leader>td :TodoTelescope<cr>
 " ------------------------------------------------------------------------------
 nnoremap<leader>gc :Git commit <CR>
 nnoremap<leader>gch :Git checkout
 "nnoremap<leader>gd :Git diff<CR>
 nnoremap<leader>gw :Gvdiffsplit<CR>
 nnoremap<leader>gs :G<CR>
-nnoremap<leader>gp :Git push<CR>
-nnoremap<leader>g1 :diffget //2<CR>
-nnoremap<leader>g0 :diffget //0<CR>
+nnoremap<leader>gp :Git push
+nnoremap<leader>g1 :diffget //2
+nnoremap<leader>g0 :diffget //0
 nnoremap<C-a> ggVG
 "easy align commands------------------------------------------------------------
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -36,9 +37,11 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 "-------------------------------------------------------------------------------
 " For better Commenting and documentation of code-------------------------------
+" HACK: hacky way to comment------------------------------------------------------------------------
 nnoremap <leader>- :set ri<cr>100A-<esc>101<bar>d$0:set nori<cr>
 
-
+" HACK:Auto Command for changing and directory
+nnoremap<leader>vcd :cd $HOME/.config/nvim<cr>
 "---------------------------------------------------------------------------------------------------
 nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
