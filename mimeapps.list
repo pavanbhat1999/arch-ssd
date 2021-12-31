@@ -5,3 +5,4 @@ x-scheme-handler/tg=userapp-Telegram Desktop-VX2JE1.desktop;
 [Default Applications]
 inode/directory=ranger.desktop
 x-scheme-handler/tg=userapp-Telegram Desktop-VX2JE1.desktop
+application/pdf=org.pwmt.zathura.desktop

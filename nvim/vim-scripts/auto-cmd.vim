@@ -38,4 +38,6 @@ autocmd BufWritePost *11.cpp !g++ % -lGL -lcrypto -lglut -lGLU &&  ./a.out
 autocmd BufWritePost *.tex !pdflatex %
 " Auto  for permission for shell script
 command! Perm !sudo chmod +x %
+command! Push !git push gitlab && git push github
+" Presentation Mode
 "-------------------------------------------------------------------------------

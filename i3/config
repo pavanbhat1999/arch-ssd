@@ -185,6 +185,7 @@ assign [class="Org.gnome.Nautilus"] $ws3
 assign [class="Pcmanfm"] $ws3
 assign [class="mpv"] $ws5
 for_window [class="xdman-Main"] floating enable
+for_window [class="Zathura"] floating enable
 # reload the configuration file
 bindsym $mod+Shift+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
