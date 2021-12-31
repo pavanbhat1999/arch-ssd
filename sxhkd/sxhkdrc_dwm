@@ -11,11 +11,11 @@ super + shift + Return
     alacritty
 # program launcher
 super + r
-	rofi -show drun -show-icons -font "Hack 18"
+	rofi -show drun -show-icons -font "Fira Code 18"
 super + d
     dmenu_run -nb '#272727' -sf '#1e1e1e' -sb '#A3AD48' -nf '#C5D71D'
 super + v
-    rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -font "Hack 18"
+    rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -font "Fira Code 18"
 alt + n
     kitty -e nmtui
 super + shift + b
@@ -34,7 +34,7 @@ XF86AudioLowerVolume
     pactl set-sink-volume @DEFAULT_SINK@ -5%
 XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle
-alt+comma
+alt + comma
     sh /home/root99/.config/rofi/launchers/misc/launcher.sh
 alt + p
     sh /home/root99/.config/rofi/powermenu/powermenu.sh
@@ -54,14 +54,14 @@ super+x
     import $HOME/Downloads/Pictures/screenshot-`/bin/date +%Y%m%d-%H:%M:%S`.png
 super + alt + space
     kitty -e ranger
-#super + shift + r
-	#pkill -USR1 -x sxhkd
+super + shift + e
+	pkill -USR1 -x sxhkd
 alt + v
     kitty -e nvim /home/root99/.config/nvim/init.lua
 alt + b
     kitty -e nvim /home/root99/.config/bspwm/bspwmrc
 alt + k
-    kitty -e nvim /home/root99/.config/sxhkd/sxhkdrc
+    kitty -e nvim /home/root99/.config/sxhkd/sxhkdrc_dwm
 alt + m
     $HOME/bin/rofi-beats
 #alt + s
@@ -72,3 +72,5 @@ super + a
     kitty -e w2anime
 super + shift + ctrl + e
     killall xinit
+alt + t
+    rofi-todo

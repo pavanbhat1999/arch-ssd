@@ -35,7 +35,7 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 #>>>>Aliesas
-#alias ls="colorls" 
+#alias ls="colorls"
 alias ls="ls --color=auto"
 alias gs="git status"
 alias gp="git push"
@@ -52,14 +52,14 @@ alias tr='trash-restore'
 alias ggg='cd $HOME/Downloads/prbhat07'
 #export JAVA_HOME='/usr/lib/jvm/java-8-openjdk/jre'
 #export JAVA_HOME='/usr/lib/jvm/java-11-openjdk'
-#export PATH=$JAVA_HOME/bin:$PATH 
+#export PATH=$JAVA_HOME/bin:$PATH
 #export PATH=$HOME/.config/rofi/bin:$PATH
 #bindkey -v
 #if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -le 4 ]; then
   #exec startx
 #fi
 #source /usr/share/nvm/init-nvm.sh
-export PATH=$HOME/.config/npm-global/bin:$PATH
+# export PATH=$HOME/.config/npm-global/bin:$PATH
 #export PATH=~/bin:$PATH
 #export PATH=~/bin/CustomScripts:$PATH
 #export JDTLS_HOME=/home/root99/Downloads/jdtls

@@ -1,5 +1,5 @@
 [netspeed]
-command= $HOME/bin/scripts/window-manager/netspeed
+command= $HOME/bin/scripts/window-manager/netspeed /* TODO: make everything in path */
 interval=1
 [temparature]
 command=echo -n "🔥" && $HOME/bin/scripts/window-manager/temp
@@ -11,8 +11,8 @@ interval=1
 command=echo -n "" && $HOME/bin/scripts/window-manager/sb-volume
 interval=1
 [battery]
-command=sb-battery
-interval=30
+command=sb-battery /* appended to Path */
+interval=1
 [disk]
 command=echo -n "💾" && $HOME/bin/scripts/window-manager/disk.sh
 interval=5
