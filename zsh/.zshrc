@@ -27,7 +27,7 @@ precmd_vcs_info() { vcs_info }
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 #RPROMPT=\$vcs_info_msg_0_' $(git_super_status) %(?.%F{green}√.%F{red}%?)'
-PROMPT='$NEWLINE  %F{blue}%B%~%f $vcs_info_msg_0_ $NEWLINE  %F{blue} %B %(?.%F{magenta}➜.%F{red}➜) %b'
+PROMPT='$NEWLINE  %F{blue}%B%~%f $vcs_info_msg_0_ $NEWLINE  %F{blue} %B   %(?.%F{magenta}->.%F{red}->) %b'
 #RPROMPT=%B\$vcs_info_msg_0_'%(?.%F{green}✓.%F{red}%?)'
 RPROMPT=%B'%(?.%F{green}✓.%F{red}%?)'
 zstyle ':vcs_info:git:*' formats '%F{208}  (%b) %r %f %u %c '
