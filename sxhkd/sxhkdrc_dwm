@@ -66,8 +66,8 @@ alt + m
     $HOME/bin/rofi-beats
 #alt + s
     #tdrop -ma -w -4  -s dropdown alacritty
-alt + x
-   polybar-msg cmd toggle
+# alt + x
+#    polybar-msg cmd toggle
 super + a
     kitty -e w2anime
 super + shift + ctrl + e
