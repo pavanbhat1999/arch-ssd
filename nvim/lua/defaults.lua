@@ -28,7 +28,9 @@ vim.opt.updatetime = 100
 vim.opt.scrolloff = 18
 vim.opt.signcolumn = "auto"
 vim.cmd [[au BufWritePre * :%s/\s\+$//e]]
-vim.g.netrw_liststyle = 3
+-- plugin settings----------------------------------------------------------------------------------
+-- vim.g.netrw_liststyle = 3
+---------------------------------------------------------------------------------------------------
 vim.api.nvim_exec([[
   augroup YankHighlight
     autocmd!

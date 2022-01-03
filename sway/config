@@ -65,7 +65,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-#bindsym $mod+d exec --no-startup-id     dmenu_run -nb '#272727' -sf '#1e1e1e' -sb '#A3AD48' -nf '#C5D71D'
+bindsym $mod+d exec --no-startup-id     dmenu_run -nb '#272727' -sf '#1e1e1e' -sb '#A3AD48' -nf '#C5D71D'
 
 
 # bindsym $mod+r exec --no-startup-id rofi -show drun -show-icons -font "Fira Code 18"
@@ -126,7 +126,7 @@ bindsym $mod+t layout toggle split
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus  scratchpad show
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle;resize set 900 700;move position center
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -186,13 +186,12 @@ assign [class="Pcmanfm"] $ws3
 assign [class="mpv"] $ws5
 for_window [class="xdman-Main"] floating enable
 for_window [class="Zathura"] floating enable
-for_window [title="ranger" class="kitty"] floating enable;resize set 900 700;move position center
 # reload the configuration file
 bindsym $mod+Shift+r reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 # bindsym $mod+shift+r restart
 # exit i3 (logs you out of your X session)
-#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 #directly exit i3
 #bindsym $mod+Shift+Ctrl+e exec i3-msg exit
 # resize window (you can also use the mouse for that)
@@ -253,6 +252,7 @@ mode "resize" {
 #exec --no-startup-id xinput set-prop 14 364 1
 #start num touchpad
 exec --no-startup-id setxkbmap -option keypad:pointerkeys
+exec --no-startup-id sxhkd
 #swap caps and esc
 #exec setxkbmap -option caps:swapescape
 #restaring the system
@@ -274,58 +274,28 @@ bindsym $mod+Shift+z gaps outer current minus 5
 
 bindsym $mod+Ctrl+a gaps inner current plus 5
 bindsym $mod+Shift+a gaps inner current minus 5
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+output * bg $HOME/Downloads/Wall/moon_root2.png fill
+#
+# Status Bar:
+#
+# Read `man 5 sway-bar` for more information about this section.
 bar {
-height 35
-i3bar_command ~/Downloads/i3-4.20_features/build/i3bar -t
-# i3bar_command i3bar -t
-#status_command i3status
-#status_command /usr/local/bin/net-speed-and-brightness.sh
-#status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
-status_command i3blocks
-position top
-# output primary
-#tray_output primary
-font pango:Fira Code Mono 12
-colors{
-    background #00000000
-    #statusline #00000000
-    #separator  #00000000
-    focused_workspace #00000000 #00000000 #E5321A
-    active_workspace #00000000 #00000000 #E5321A
-    inactive_workspace #00000000 #00000000 #D9A098
-    urgent_workspace #eb709b #eb709b #ffffff
-}
-separator_symbol 🔸
-}
-#
-#
-#starting polybar
-#exec_always --no-startup-id sh polybar bottom --config=$HOME/.config/polybar.old/config_i3 & polybar right --config=$HOME/.config/polybar.old/config_i3
-#exec_always --no-startup-id sh $HOME/.config/polybar.old/launch.sh
-#polybar modes
-#exec_always --no-startup-id polybar bottom --config=$HOME/.config/polybar.old/config_i3 & polybar right --config=$HOME/.config/polybar.old/config_i3
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
-mode "$mode_system" {
-    bindsym l exec --no-startup-id sh ~/.config/i3/lock.sh lock, mode "default"
-    bindsym e exec --no-startup-id sh ~/.config/i3/lock.sh logout, mode "default"
-    bindsym s exec --no-startup-id sh ~/.config/i3/lock.sh suspend, mode "default"
-    bindsym h exec --no-startup-id sh ~/.config/i3/lock.sh hibernate, mode "default"
-    bindsym r exec --no-startup-id sh ~/.config/i3/lock.sh reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id sh ~/.config/i3/lock.sh shutdown, mode "default"
+    position top
 
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-#options for power management
-bindsym $mod+Pause mode "$mode_system"
+    # When the status_command prints a new line to stdout, swaybar updates.
+    # The default just shows the current date and time.
+    status_command i3blocks
 
-#starting ranger file manager
-#bindsym $mod+mod1+space exec kitty -e ranger
-#launching help a file to see shortcuts I use
-#
-#starting vim
-#bindsym mod1+v exec kitty -e nvim $HOME/.config/nvim/init.vim
+    colors {
+            background #00000000
+            focused_workspace #00000000 #00000000 #E5321A
+            active_workspace #00000000 #00000000 #E5321A
+            inactive_workspace #00000000 #00000000 #D9A098
+            urgent_workspace #eb709b #eb709b #ffffff
+    }
+
+}
+
+include @sysconfdir@/sway/config.d/*

@@ -24,6 +24,7 @@ return require("packer").startup(function()
 	-- #1 General Plugins--------------------------------------------------------------------------------
 	use("wbthomason/packer.nvim")
 	use("mbbill/undotree")
+    use("scrooloose/nerdtree")
 	use("tpope/vim-fugitive")
 	use("jiangmiao/auto-pairs")
 	use("tpope/vim-surround") -- https://github.com/tpope/vim-surround"
@@ -91,6 +92,13 @@ return require("packer").startup(function()
 		end,
 	})
 	use({ "ThePrimeagen/harpoon" })
+	use({ "vimwiki/vimwiki" })
+	-- use({
+	-- 	"glacambre/firenvim",
+	-- 	run = function()
+	-- 		vim.fn["firenvim#install"](1)
+	-- 	end,
+	-- })
 	---------------------------------------------------------------------------------------------------
 	---------------------------------------------------------------------------------------------------
 	---------------------------------------------------------------------------------------------------

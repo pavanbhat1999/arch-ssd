@@ -1,5 +1,9 @@
 .Xmodmap
 .dwm.log
+GNU/
+doom-my/
+pass/
+dwm.log
 autostart/
 cef_user_data/
 google-chrome/

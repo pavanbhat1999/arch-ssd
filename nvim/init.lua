@@ -1,4 +1,5 @@
 vim.cmd([[autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"]])
+-- vim.cmd([[set guifont=FiraCode:h10]]) -- for firenvim
 require("plugins")
 require("neoscroll").setup()
 require("defaults")

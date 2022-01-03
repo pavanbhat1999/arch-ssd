@@ -13,7 +13,9 @@ super + shift + Return
 super + r
 	rofi -show drun -show-icons -font "Fira Code 18"
 super + d
-    dmenu_run -nb '#272727' -sf '#1e1e1e' -sb '#A3AD48' -nf '#C5D71D'
+    dmenu_run
+super + p
+    passmenu
 super + v
     rofi -modi "clipboard:greenclip print" -show clipboard -run-command '{cmd}' -font "Fira Code 18"
 alt + n
@@ -53,7 +55,7 @@ super+y
 super+x
     import $HOME/Downloads/Pictures/screenshot-`/bin/date +%Y%m%d-%H:%M:%S`.png
 super + alt + space
-    kitty -e ranger
+    kitty --title ranger -e ranger
 super + shift + e
 	pkill -USR1 -x sxhkd
 alt + v
