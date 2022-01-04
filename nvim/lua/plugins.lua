@@ -24,14 +24,24 @@ return require("packer").startup(function()
 	-- #1 General Plugins--------------------------------------------------------------------------------
 	use("wbthomason/packer.nvim")
 	use("mbbill/undotree")
-    use("scrooloose/nerdtree")
+	--NOTE: use("scrooloose/nerdtree")
+	use({
+		"kyazdani42/nvim-tree.lua",
+		config = function()
+			require("nvim-tree").setup({})
+		end,
+	})
 	use("tpope/vim-fugitive")
-	use("jiangmiao/auto-pairs")
+	--NOTE: use("jiangmiao/auto-pairs")
+	use("windwp/nvim-autopairs")
+	---NOTE:  use("steelsojka/pears.nvim")
+	---NOTE: require("pears").setup()
 	use("tpope/vim-surround") -- https://github.com/tpope/vim-surround"
 	use("alvan/vim-closetag") -- auto closing tags - web development
 	use("numToStr/Comment.nvim")
 	use("kyazdani42/nvim-web-devicons")
 	use("mhinz/vim-startify")
+	--NOTE: use('lewis6991/gitsigns.nvim')
 	use("airblade/vim-gitgutter")
 	use("junegunn/vim-easy-align")
 	----------------------------------------------------------------------------------------------------
@@ -92,14 +102,27 @@ return require("packer").startup(function()
 		end,
 	})
 	use({ "ThePrimeagen/harpoon" })
-	use({ "vimwiki/vimwiki" })
+	use({
+		"vimwiki/vimwiki",
+		branch = "dev",
+		-- keys = { "<leader>x" },
+		config = function()
+			vim.g["vimwiki_list"] = {
+				{
+					template_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/vimwiki/autoload/",
+					path = "~/Downloads/vimwiki",
+					-- syntax = "markdown",
+					-- ext = ".md",
+				},
+			}
+			vim.g["vimwiki_global_ext"] = 0
+		end,
+	})
 	-- use({
 	-- 	"glacambre/firenvim",
 	-- 	run = function()
 	-- 		vim.fn["firenvim#install"](1)
 	-- 	end,
 	-- })
-	---------------------------------------------------------------------------------------------------
-	---------------------------------------------------------------------------------------------------
 	---------------------------------------------------------------------------------------------------
 end)

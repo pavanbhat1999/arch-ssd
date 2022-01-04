@@ -43,7 +43,6 @@ alias gc="git commit"
 alias gd="git diff"
 alias gch="git checkout"
 alias yu='youtube-dl -x --audio-format mp3'
-alias brave='brave-browser-nightly'
 #alias top='bpytop'
 #alias rm='echo "Please Dont use rm instead use trash-put or tp"'
 alias tp='trash-put'

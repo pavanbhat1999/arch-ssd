@@ -74,11 +74,6 @@ _G.packer_plugins = {
     path = "/home/root99/.local/share/nvim/site/pack/packer/start/Comment.nvim",
     url = "https://github.com/numToStr/Comment.nvim"
   },
-  ["auto-pairs"] = {
-    loaded = true,
-    path = "/home/root99/.local/share/nvim/site/pack/packer/start/auto-pairs",
-    url = "https://github.com/jiangmiao/auto-pairs"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/root99/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -142,15 +137,15 @@ _G.packer_plugins = {
     path = "/home/root99/.local/share/nvim/site/pack/packer/start/neoscroll.nvim",
     url = "https://github.com/karb94/neoscroll.nvim"
   },
-  nerdtree = {
-    loaded = true,
-    path = "/home/root99/.local/share/nvim/site/pack/packer/start/nerdtree",
-    url = "https://github.com/scrooloose/nerdtree"
-  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/home/root99/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+  },
+  ["nvim-autopairs"] = {
+    loaded = true,
+    path = "/home/root99/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -161,6 +156,12 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/root99/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-tree.lua"] = {
+    config = { "\27LJ\1\2;\0\0\2\0\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\1G\0\1\0\nsetup\14nvim-tree\frequire\0" },
+    loaded = true,
+    path = "/home/root99/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
+    url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
@@ -269,6 +270,7 @@ _G.packer_plugins = {
     url = "https://github.com/hrsh7th/vim-vsnip-integ"
   },
   vimwiki = {
+    config = { "\27LJ\1\2Ý\1\0\0\5\0\n\0\0194\0\0\0007\0\1\0002\1\3\0003\2\a\0004\3\0\0007\3\3\0037\3\4\3%\4\5\0>\3\2\2%\4\6\0$\3\4\3:\3\b\2;\2\1\1:\1\2\0004\0\0\0007\0\1\0'\1\0\0:\1\t\0G\0\1\0\23vimwiki_global_ext\18template_path\1\0\1\tpath\24~/Downloads/vimwiki./site/pack/packer/start/vimwiki/autoload/\tdata\fstdpath\afn\17vimwiki_list\6g\bvim\0" },
     loaded = true,
     path = "/home/root99/.local/share/nvim/site/pack/packer/start/vimwiki",
     url = "https://github.com/vimwiki/vimwiki"
@@ -280,6 +282,14 @@ time([[Defining packer_plugins]], false)
 time([[Config for todo-comments.nvim]], true)
 try_loadstring("\27LJ\1\2?\0\0\2\0\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\1G\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
 time([[Config for todo-comments.nvim]], false)
+-- Config for: vimwiki
+time([[Config for vimwiki]], true)
+try_loadstring("\27LJ\1\2Ý\1\0\0\5\0\n\0\0194\0\0\0007\0\1\0002\1\3\0003\2\a\0004\3\0\0007\3\3\0037\3\4\3%\4\5\0>\3\2\2%\4\6\0$\3\4\3:\3\b\2;\2\1\1:\1\2\0004\0\0\0007\0\1\0'\1\0\0:\1\t\0G\0\1\0\23vimwiki_global_ext\18template_path\1\0\1\tpath\24~/Downloads/vimwiki./site/pack/packer/start/vimwiki/autoload/\tdata\fstdpath\afn\17vimwiki_list\6g\bvim\0", "config", "vimwiki")
+time([[Config for vimwiki]], false)
+-- Config for: nvim-tree.lua
+time([[Config for nvim-tree.lua]], true)
+try_loadstring("\27LJ\1\2;\0\0\2\0\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\1G\0\1\0\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
+time([[Config for nvim-tree.lua]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)

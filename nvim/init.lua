@@ -2,6 +2,7 @@ vim.cmd([[autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"]])
 -- vim.cmd([[set guifont=FiraCode:h10]]) -- for firenvim
 require("plugins")
 require("neoscroll").setup()
+require("autopairs")
 require("defaults")
 require("color-settings")
 require("key-mappings") -- TODO:Convert all mappings to lua standard--------------------------------
