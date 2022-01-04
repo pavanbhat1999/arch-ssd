@@ -10,7 +10,7 @@ horizontal_padding = 32
 frame_width = 2
 sort = no
 idle_threshold = 120
-font = JetBrains Mono Medium 14
+font = Fira Code 14
 line_height = 4
 markup = full
 format = %s\n%b
@@ -24,7 +24,7 @@ show_indicators = no
 icon_position = off
 sticky_history = yes
 history_length = 20
-browser = /usr/bin/brave-browser-nightly
+browser = /usr/bin/brave
 always_run_script = true
 title = Dunst
 class = Dunst
@@ -48,7 +48,7 @@ foreground = "#93a1a1"
 frame_color = "#ba68c8"
 
 [urgency_critical]
-timeout = 0
+timeout = 5
 background = "#B10F29"
 foreground = "#93a1a1"
 frame_color = "#ff7043"
