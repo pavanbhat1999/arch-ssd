@@ -47,6 +47,7 @@ return require("packer").startup(function()
 	----------------------------------------------------------------------------------------------------
 	-- 2 Auto Completion Plugins-------------------------------------------------------------------------
 	use("neovim/nvim-lspconfig")
+	use({ "tami5/lspsaga.nvim" })
 	use({ "github/copilot.vim", opt = true, cmd = { "coco" } })
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-buffer")
@@ -118,6 +119,7 @@ return require("packer").startup(function()
 			vim.g["vimwiki_global_ext"] = 0
 		end,
 	})
+	use("davidgranstrom/nvim-markdown-preview")
 	-- use({
 	-- 	"glacambre/firenvim",
 	-- 	run = function()

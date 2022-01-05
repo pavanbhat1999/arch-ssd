@@ -127,6 +127,11 @@ _G.packer_plugins = {
     path = "/home/root99/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
     url = "https://github.com/onsails/lspkind-nvim"
   },
+  ["lspsaga.nvim"] = {
+    loaded = true,
+    path = "/home/root99/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
+    url = "https://github.com/tami5/lspsaga.nvim"
+  },
   ["lualine.nvim"] = {
     loaded = true,
     path = "/home/root99/.local/share/nvim/site/pack/packer/start/lualine.nvim",
@@ -156,6 +161,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/root99/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
+  },
+  ["nvim-markdown-preview"] = {
+    loaded = true,
+    path = "/home/root99/.local/share/nvim/site/pack/packer/start/nvim-markdown-preview",
+    url = "https://github.com/davidgranstrom/nvim-markdown-preview"
   },
   ["nvim-tree.lua"] = {
     config = { "\27LJ\1\2;\0\0\2\0\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\1G\0\1\0\nsetup\14nvim-tree\frequire\0" },
@@ -282,14 +292,14 @@ time([[Defining packer_plugins]], false)
 time([[Config for todo-comments.nvim]], true)
 try_loadstring("\27LJ\1\2?\0\0\2\0\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\1G\0\1\0\nsetup\18todo-comments\frequire\0", "config", "todo-comments.nvim")
 time([[Config for todo-comments.nvim]], false)
--- Config for: vimwiki
-time([[Config for vimwiki]], true)
-try_loadstring("\27LJ\1\2Ý\1\0\0\5\0\n\0\0194\0\0\0007\0\1\0002\1\3\0003\2\a\0004\3\0\0007\3\3\0037\3\4\3%\4\5\0>\3\2\2%\4\6\0$\3\4\3:\3\b\2;\2\1\1:\1\2\0004\0\0\0007\0\1\0'\1\0\0:\1\t\0G\0\1\0\23vimwiki_global_ext\18template_path\1\0\1\tpath\24~/Downloads/vimwiki./site/pack/packer/start/vimwiki/autoload/\tdata\fstdpath\afn\17vimwiki_list\6g\bvim\0", "config", "vimwiki")
-time([[Config for vimwiki]], false)
 -- Config for: nvim-tree.lua
 time([[Config for nvim-tree.lua]], true)
 try_loadstring("\27LJ\1\2;\0\0\2\0\3\0\a4\0\0\0%\1\1\0>\0\2\0027\0\2\0002\1\0\0>\0\2\1G\0\1\0\nsetup\14nvim-tree\frequire\0", "config", "nvim-tree.lua")
 time([[Config for nvim-tree.lua]], false)
+-- Config for: vimwiki
+time([[Config for vimwiki]], true)
+try_loadstring("\27LJ\1\2Ý\1\0\0\5\0\n\0\0194\0\0\0007\0\1\0002\1\3\0003\2\a\0004\3\0\0007\3\3\0037\3\4\3%\4\5\0>\3\2\2%\4\6\0$\3\4\3:\3\b\2;\2\1\1:\1\2\0004\0\0\0007\0\1\0'\1\0\0:\1\t\0G\0\1\0\23vimwiki_global_ext\18template_path\1\0\1\tpath\24~/Downloads/vimwiki./site/pack/packer/start/vimwiki/autoload/\tdata\fstdpath\afn\17vimwiki_list\6g\bvim\0", "config", "vimwiki")
+time([[Config for vimwiki]], false)
 
 -- Command lazy-loads
 time([[Defining lazy-load commands]], true)
