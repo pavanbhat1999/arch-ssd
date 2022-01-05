@@ -119,7 +119,8 @@ return require("packer").startup(function()
 			vim.g["vimwiki_global_ext"] = 0
 		end,
 	})
-	use("davidgranstrom/nvim-markdown-preview")
+	-- use("davidgranstrom/nvim-markdown-preview")
+    use({ "iamcco/markdown-preview.nvim" , run = "cd app && npm install" })
 	-- use({
 	-- 	"glacambre/firenvim",
 	-- 	run = function()
