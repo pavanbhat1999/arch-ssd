@@ -125,7 +125,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+t layout toggle split
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus  scratchpad show
-bindsym $mod+Ctrl+t sticky toggle
+bindsym $mod+Ctrl+s sticky toggle
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle;resize set 900 700;move position center
 
