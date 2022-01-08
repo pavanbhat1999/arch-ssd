@@ -23,7 +23,7 @@ alt + n
 super + shift + b
     brave
 super + shift + f
-    firefox
+    HOME=${HOME}/.config/firefox firefox
 super + n
     pcmanfm
 super + shift + n
