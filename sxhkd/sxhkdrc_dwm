@@ -55,7 +55,7 @@ super+y
 super+x
     import $HOME/Downloads/Pictures/screenshot-`/bin/date +%Y%m%d-%H:%M:%S`.png
 super + alt + space
-    kitty --title ranger -e ranger
+    kitty --title ranger ranger
 super + shift + e
 	pkill -USR1 -x sxhkd
 alt + v

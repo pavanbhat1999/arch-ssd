@@ -2,6 +2,7 @@
 echo "✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗"
 #fortune | cowsay  | lolcat
 echo "✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗"
+figlet Arch
 autoload -U colors && colors
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.config/.histfile
