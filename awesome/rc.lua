@@ -96,15 +96,15 @@ local mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.
                                   }
                         })
 
-local mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
+-- local mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
+--                                      menu = mymainmenu })
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
 -- }}}
 
 -- Keyboard map indicator and switcher
-local mykeyboardlayout = awful.widget.keyboardlayout()
+-- local mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
@@ -237,7 +237,7 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 local tags = awful.screen.focused().selected_tags
-globalkeys = gears.table.join(
+local globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
@@ -338,7 +338,7 @@ globalkeys = gears.table.join(
               {description = "show the menubar", group = "launcher"})
 )
 
-clientkeys = gears.table.join(
+local clientkeys = gears.table.join(
     awful.key({ modkey,           }, "f",
         function (c)
             c.fullscreen = not c.fullscreen
@@ -432,7 +432,7 @@ for i = 1, 9 do
     )
 end
 
-clientbuttons = gears.table.join(
+local clientbuttons = gears.table.join(
     awful.button({ }, 1, function (c)
         c:emit_signal("request::activate", "mouse_click", {raise = true})
     end),

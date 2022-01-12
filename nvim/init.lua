@@ -1,21 +1,22 @@
 vim.cmd([[autocmd VimEnter * :silent exec "!kill -s SIGWINCH $PPID"]])
 -- vim.cmd([[set guifont=FiraCode:h10]]) -- for firenvim
 require("plugins")
-require("neoscroll").setup()
-require("autopairs")
 require("defaults")
 require("color-settings")
-require("key-mappings") -- TODO:Convert all mappings to lua standard--------------------------------
+require("key-mappings")
+-- Auto Complte  and lsp setup----------------------------------------------------------------------
 require("cmp-config")
 require("lsp/python-lsp")
 require("lsp/bash-lsp")
 require("lsp/lua-lsp")
-require("lua-line")
-require("comment")
-require("telescope-settings")
-require("harpoon-settings")
-require("treesitter")
 -- require("efm")
 require("null-ls-config")
--- Need port of auto command from neovim------------------------------------------------------------
+require("autopairs")
+-- Usefull Plugin setup-----------------------------------------------------------------------------
+require("lua-line")
+require("telescope-settings")
+require("treesitter")
+----------------------------------------------------------------------------------------------------
+require("non-setup")
+-- Need port of auto command from neovim
 vim.cmd("source $HOME/.config/nvim/vim-scripts/auto-cmd.vim")

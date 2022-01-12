@@ -24,7 +24,7 @@ return require("packer").startup(function()
 	-- #1 General Plugins--------------------------------------------------------------------------------
 	use("wbthomason/packer.nvim")
 	use("mbbill/undotree")
-	--NOTE: use("scrooloose/nerdtree")
+	-- use("scrooloose/nerdtree")
 	use({
 		"kyazdani42/nvim-tree.lua",
 		config = function()
@@ -32,22 +32,22 @@ return require("packer").startup(function()
 		end,
 	})
 	use("tpope/vim-fugitive")
-	--NOTE: use("jiangmiao/auto-pairs")
+	-- use("jiangmiao/auto-pairs")
 	use("windwp/nvim-autopairs")
-	---NOTE:  use("steelsojka/pears.nvim")
-	---NOTE: require("pears").setup()
+	---  use("steelsojka/pears.nvim")
+	--- require("pears").setup()
 	use("tpope/vim-surround") -- https://github.com/tpope/vim-surround"
 	use("alvan/vim-closetag") -- auto closing tags - web development
 	use("numToStr/Comment.nvim")
 	use("kyazdani42/nvim-web-devicons")
 	use("mhinz/vim-startify")
-	--NOTE: use('lewis6991/gitsigns.nvim')
+	-- use('lewis6991/gitsigns.nvim')
 	use("airblade/vim-gitgutter")
 	use("junegunn/vim-easy-align")
 	----------------------------------------------------------------------------------------------------
 	-- 2 Auto Completion Plugins-------------------------------------------------------------------------
 	use("neovim/nvim-lspconfig")
-	use({ "tami5/lspsaga.nvim" })
+	-- use({ "tami5/lspsaga.nvim" }) deprecated
 	use({ "github/copilot.vim", opt = true, cmd = { "coco" } })
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-buffer")
@@ -94,12 +94,17 @@ return require("packer").startup(function()
 	-- use 'junegunn/fzf.vim'
 	-- -------------------------------------------------------------------------------------------------
 	-- use 'lervag/vimtex',{'do':'latex'}
-	-- Lua
 	use({
 		"folke/todo-comments.nvim",
 		requires = "nvim-lua/plenary.nvim",
 		config = function()
 			require("todo-comments").setup({})
+		end,
+	})
+	use({
+		"folke/which-key.nvim",
+		config = function()
+			require("which-key").setup({})
 		end,
 	})
 	use({ "ThePrimeagen/harpoon" })
@@ -120,7 +125,7 @@ return require("packer").startup(function()
 		end,
 	})
 	-- use("davidgranstrom/nvim-markdown-preview")
-    use({ "iamcco/markdown-preview.nvim" , run = "cd app && npm install" })
+	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install" })
 	-- use({
 	-- 	"glacambre/firenvim",
 	-- 	run = function()

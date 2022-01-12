@@ -1,6 +1,10 @@
 [Added Associations]
 application/vnd.openxmlformats-officedocument.wordprocessingml.document=org.pwmt.zathura.desktop;
 x-scheme-handler/tg=userapp-Telegram Desktop-VX2JE1.desktop;
+x-scheme-handler/mailto=userapp-Thunderbird-PVBUF1.desktop;
+x-scheme-handler/mid=userapp-Thunderbird-PVBUF1.desktop;
+x-scheme-handler/webcal=userapp-Thunderbird-F1YSF1.desktop;
+x-scheme-handler/webcals=userapp-Thunderbird-F1YSF1.desktop;
 
 [Default Applications]
 inode/directory=ranger.desktop
@@ -11,3 +15,10 @@ x-scheme-handler/https=brave-browser.desktop
 image/png=sxiv.desktop
 image/jpg=sxiv.desktop
 image/jpeg=sxiv.desktop
+x-scheme-handler/mailto=userapp-Thunderbird-PVBUF1.desktop
+message/rfc822=userapp-Thunderbird-PVBUF1.desktop
+x-scheme-handler/mid=userapp-Thunderbird-PVBUF1.desktop
+x-scheme-handler/webcal=userapp-Thunderbird-F1YSF1.desktop
+text/calendar=userapp-Thunderbird-F1YSF1.desktop
+application/x-extension-ics=userapp-Thunderbird-F1YSF1.desktop
+x-scheme-handler/webcals=userapp-Thunderbird-F1YSF1.desktop
