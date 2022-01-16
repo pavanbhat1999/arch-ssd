@@ -14,6 +14,8 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
+-- local eminent = require("eminent")
+local battery = require("widgets/battery")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
@@ -51,7 +53,7 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
+beautiful.init("/home/root99/.config/awesome/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 local terminal = "kitty"
@@ -67,19 +69,19 @@ local modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-	awful.layout.suit.floating,
+	-- awful.layout.suit.floating,
 	awful.layout.suit.tile,
-	awful.layout.suit.tile.left,
-	awful.layout.suit.tile.bottom,
-	awful.layout.suit.tile.top,
-	awful.layout.suit.fair,
-	awful.layout.suit.fair.horizontal,
-	awful.layout.suit.spiral,
-	awful.layout.suit.spiral.dwindle,
-	awful.layout.suit.max,
+	-- awful.layout.suit.tile.left,
+	-- awful.layout.suit.tile.bottom,
+	-- awful.layout.suit.tile.top,
+	-- awful.layout.suit.fair,
+	-- awful.layout.suit.fair.horizontal,
+	-- awful.layout.suit.spiral,
+	-- awful.layout.suit.spiral.dwindle,
+	-- awful.layout.suit.max,
 	awful.layout.suit.max.fullscreen,
-	awful.layout.suit.magnifier,
-	awful.layout.suit.corner.nw,
+	-- awful.layout.suit.magnifier,
+	-- awful.layout.suit.corner.nw,
 	-- awful.layout.suit.corner.ne,
 	-- awful.layout.suit.corner.sw,
 	-- awful.layout.suit.corner.se,
@@ -187,12 +189,12 @@ screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
 	-- Wallpaper
-	set_wallpaper(s)
+	-- set_wallpaper(s)
 
 	-- Each screen has its own tag table.
-	awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[2])
+	awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
-	-- awful.tag({ "1: ", "뮻", "", "", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[2])
+	-- awful.tag({ "1:", "2:뮻", "", "", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[2])
 
 	-- Create a promptbox for each screen
 	s.mypromptbox = awful.widget.prompt()
@@ -234,10 +236,11 @@ awful.screen.connect_for_each_screen(function(s)
 		height = 30,
 		bg = beautiful.bg_normal,
 		position = "top",
-		border_color = beautiful.border_focus,
+		-- border_color = beautiful.border_focus,
 		border_width = beautiful.border_width,
 	})
 
+local seperator = wibox.widget.textbox('🔸')
 	-- Add widgets to the wibox
 	s.mywibox:setup({
 		layout = wibox.layout.align.horizontal,
@@ -245,15 +248,35 @@ awful.screen.connect_for_each_screen(function(s)
 			layout = wibox.layout.fixed.horizontal,
 			-- mylauncher,
 			s.mytaglist,
-			s.mypromptbox,
+			-- s.mypromptbox, TODO: Prompt is ugly
 		},
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			-- mykeyboardlayout,
-			wibox.widget.systray(),
+            battery(),
+            -- TODO: Working On it
+            seperator,
+             -- one way to do that:
+            -- awful.widget.watch('bash -c "netspeed"', 0),
+            -- seperator,
+            awful.widget.watch('bash -c "sb-battery"', 0),
+            seperator,
+            wibox.widget.textbox("💡"),
+            awful.widget.watch('bash -c "brightness"', 0),
+            seperator,
+             -- another way:
+             -- awful.widget.watch('sensors', 15, function(widget, stdout)
+             --   for line in stdout:gmatch("[^\r\n]+") do
+             --     if line:match("temp1") then
+             --       widget:set_text(line)
+             --       return
+             --     end
+               -- end
+             -- end),
 			mytextclock,
 			s.mylayoutbox,
+			wibox.widget.systray(),
 		},
 	})
 end)
@@ -529,7 +552,7 @@ awful.rules.rules = {
 	-- Add titlebars to normal clients and dialogs
 	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = false } },
 
-	-- Set Firefox to always map on the tag named "2" on screen 1.
+	-- Set Brave to always map on the tag named "2" on screen 1.
 	{ rule = { class = "Brave-browser" }, properties = { screen = 1, tag = "2" } },
 }
 -- }}}
@@ -599,3 +622,7 @@ client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
 -- }}}
+-- Gaps
+beautiful.useless_gap = 5
+--Auto Start
+awful.spawn(terminal.."-e nitrogen --restore")

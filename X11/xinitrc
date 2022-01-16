@@ -70,8 +70,7 @@ xsetroot -cursor_name left_ptr &
 #exec qtile start
 #exec xmonad
 #sudo mount /dev/sda6 arch-old
-exec  ~/Downloads/i3-4.20_features/build/i3
-# exec sway --my-next-gpu-wont-be-nvidia
+# exec  ~/Downloads/i3-4.20_features/build/i3
 # exec i3
-#exec awesome
+exec awesome
 #exec bspwm

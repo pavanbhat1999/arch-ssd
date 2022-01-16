@@ -7,7 +7,7 @@
 #super + Return
     #kitty
 #secondary terminal
-super + shift + Return
+super + shift + Ctrl + Return
     alacritty
 # program launcher
 super + r
@@ -23,7 +23,7 @@ alt + n
 super + shift + b
     brave
 super + shift + f
-    HOME=${HOME}/.config/firefox firefox
+    firefox
 super + n
     pcmanfm
 super + shift + n
