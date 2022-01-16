@@ -192,9 +192,9 @@ awful.screen.connect_for_each_screen(function(s)
 	-- set_wallpaper(s)
 
 	-- Each screen has its own tag table.
-	awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+	-- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
-	-- awful.tag({ "1:", "2:뮻", "", "", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[2])
+	awful.tag({ "1:", "2:뮻", "", "", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
 	-- Create a promptbox for each screen
 	s.mypromptbox = awful.widget.prompt()
@@ -298,6 +298,8 @@ local globalkeys = gears.table.join(
 	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
+	awful.key({ modkey }, "bracketleft", awful.tag.viewprev, { description = "view previous", group = "tag" }),
+	awful.key({ modkey }, "bracketright", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	awful.key({ modkey }, "Tab", awful.tag.history.restore, { description = "go back", group = "tag" }),
 
 	awful.key({ modkey }, "j", function()
@@ -553,7 +555,7 @@ awful.rules.rules = {
 	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = false } },
 
 	-- Set Brave to always map on the tag named "2" on screen 1.
-	{ rule = { class = "Brave-browser" }, properties = { screen = 1, tag = "2" } },
+	{ rule = { class = "Brave-browser" }, properties = { screen = 1, tag = "2:뮻" } },
 }
 -- }}}
 
