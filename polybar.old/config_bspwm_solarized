@@ -59,10 +59,10 @@ font-1 = HackNerdFont:pixelsize=12;
 font-2 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
 font-3 = IPAGothic:fontformat=truetype:pixelsize=10:antialias=false;
 font-4 = siji:pixelsize=10;
-;modules-left = apple bspwm 
+;modules-left = apple bspwm
 modules-left = bspwm
 
-wm-restack = bspwm
+; wm-restack = bspwm
 ;wm-restack = i3
 
 ;override-redirect = true
@@ -76,11 +76,11 @@ wm-restack = bspwm
 cursor-click = pointer
 cursor-scroll = ns-resize
 [bar/right]
-enable-ipc = true
+; enable-ipc = true
 width = 50%
 height = 30
 offset-x = 50%
-modules-right =network xbacklight pulseaudio filesystem battery temperature date 
+modules-right =network xbacklight pulseaudio filesystem battery temperature date
 
 tray-position = right
 tray-padding = 1
@@ -112,9 +112,9 @@ font-1 = HackNerdFont:pixelsize=12;
 font-2 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
 font-3 = IPAGothic:fontformat=truetype:pixelsize=10:antialias=false;
 font-4 = siji:pixelsize=8;
-;modules-left = apple bspwm 
+;modules-left = apple bspwm
 
-wm-restack = bspwm
+; wm-restack = bspwm
 ;wm-restack = i3
 
 ;override-redirect = true
@@ -147,7 +147,7 @@ menu-2-1 = Scrot
 menu-2-1-exec = scrot &
 [module/apple]
 type = custom/script
-exec = echo " " " " 
+exec = echo " " " "
 interval = 0
 click-left = notify-send "Got you________________________________________________________You have been fooled_____________________________It is not a Mac"
 [module/crypto]
@@ -230,7 +230,7 @@ format-unmounted = <label-unmounted>
 ;   %used%
 ; Default: %mountpoint% %percentage_free%%
 label-mounted-prefix = "U+1F4C0"
-label-mounted = 📀: %free% 
+label-mounted = 📀: %free%
 ;label-mounted-underline =${colors.primary}
 label-mounted-padding = 2
 label-mounted-margin = 1
@@ -267,7 +267,7 @@ label-urgent = %name%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 5
 
-label-empty = %name%
+label-empty =
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 5
 
@@ -367,7 +367,7 @@ format-disconnected =
 
 ramp-signal-0 = 
 ramp-signal-1 = 
-ramp-signal-2 = 📡  
+ramp-signal-2 = 📡
 ramp-signal-3 = 📡
 ramp-signal-4 = 📡
 ramp-signal-foreground = ${colors.foreground-alt}

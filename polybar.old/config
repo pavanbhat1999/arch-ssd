@@ -17,52 +17,49 @@
 ;==========================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-;background = #000000,
-;gruvbox
-background = #002B36
-;background = #00000000
+; background = #002B36
+background     = #00000000
 background-alt = #141313
-;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+foreground-alt = #dfdfdf
+foreground     = #DA3B0E
+primary        = #ffb52a
+secondary      = #e60053
+alert          = #bd2c40
 
 [bar/bottom]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 50%
 height = 30
 ;offset-x = 1%
-;offset-y = 1%
-radius = 6.0
+offset-y = 0.5%
+; radius = 6.0
 fixed-center = false
 bottom = false
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
-line-color = #f00
+; line-size = 3
+; line-color = #f00
+;
+; border-size = 0
+; border-color = #00000000
+;
+; padding-left = 2
+; padding-right = 2
+;
+; module-margin-left = 1
+; module-margin-right = 2
 
-border-size = 0
-border-color = #00000000
-
-padding-left = 2
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = JetBrainsMonoMedium:pixelsize=10;
+font-0 = FiraCodeMonoRegular:pixelsize=12;
 font-1 = HackNerdFont:pixelsize=12;
 font-2 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
-font-3 = IPAGothic:fontformat=truetype:pixelsize=10:antialias=false;
-font-4 = siji:pixelsize=10;
-;modules-left = apple bspwm 
-modules-left = bspwm
+font-3 = brave:style=Regular:pixelsize=16;
+; font-3 = IPAGothic:fontformat=truetype:pixelsize=10:antialias=false;
+; font-4 = siji:pixelsize=10;
+;modules-left = apple bspwm
+modules-left = bspwm xwindow
 
-wm-restack = bspwm
+; wm-restack = bspwm
 ;wm-restack = i3
 
 ;override-redirect = true
@@ -80,7 +77,8 @@ enable-ipc = true
 width = 50%
 height = 30
 offset-x = 50%
-modules-right =network xbacklight pulseaudio filesystem battery temperature date 
+offset-y = 0.5%
+modules-right =network xbacklight pulseaudio filesystem battery temperature date
 
 tray-position = right
 tray-padding = 1
@@ -93,10 +91,10 @@ radius = 6.0
 fixed-center = false
 bottom = false
 background = ${colors.background}
-foreground = ${colors.foreground}
+foreground = ${colors.foreground-alt}
 
-line-size = 3
-line-color = #f00
+; line-size = 3
+; line-color = #f00
 
 border-size = 0
 border-color = #00000000
@@ -107,14 +105,15 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = JetBrainsMonoMedium:pixelsize=12;
+font-0 = FiraCodeMonoRegular:pixelsize=12;
 font-1 = HackNerdFont:pixelsize=12;
 font-2 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
-font-3 = IPAGothic:fontformat=truetype:pixelsize=10:antialias=false;
-font-4 = siji:pixelsize=8;
-;modules-left = apple bspwm 
+font-3 = brave:style=Regular:pixelsize=16;
+; font-3 = IPAGothic:fontformat=truetype:pixelsize=10:antialias=false;
+; font-4 = siji:pixelsize=8;
+;modules-left = apple bspwm
 
-wm-restack = bspwm
+; wm-restack = bspwm
 ;wm-restack = i3
 
 ;override-redirect = true
@@ -147,7 +146,7 @@ menu-2-1 = Scrot
 menu-2-1-exec = scrot &
 [module/apple]
 type = custom/script
-exec = echo " " " " 
+exec = echo " " " "
 interval = 0
 click-left = notify-send "Got you________________________________________________________You have been fooled_____________________________It is not a Mac"
 [module/crypto]
@@ -161,7 +160,8 @@ type = internal/xwindow
 format = <label>
 format-padding = 4
 label = %title%
-label-maxlen = 25
+label-foreground = #FFFFFF
+; label-maxlen = 25
 
 ; Used instead of label when there is no window title
 ; Available tokens:
@@ -230,7 +230,7 @@ format-unmounted = <label-unmounted>
 ;   %used%
 ; Default: %mountpoint% %percentage_free%%
 label-mounted-prefix = "U+1F4C0"
-label-mounted = 📀: %free% 
+label-mounted = 📀: %free%
 ;label-mounted-underline =${colors.primary}
 label-mounted-padding = 2
 label-mounted-margin = 1
@@ -245,7 +245,7 @@ label-unmounted-foreground = #55
 type = internal/network
 interface = wlp3s0
 interval = 1.0
-label-connected = " 🔻%downspeed%   🔺 %upspeed%  "
+label-connected = " 🔻 %downspeed%   🔺 %upspeed%  "
 ;label-connected = "%{A1:kitty -e vnstat -l:}🔻 %downspeed% 🔺%upspeed%%{A}"
 ;label-down = %downspeed
 ;label-up = %upspeed%
@@ -255,21 +255,23 @@ label-disconnected = disconnected
 [module/bspwm]
 type = internal/bspwm
 
+pin-workspaces = false
 label-focused = %name%
 label-focused-background = ${colors.background}
 label-focused-underline= ${colors.primary}
-label-focused-padding = 5
+label-focused-padding = 2
 
 label-occupied = %name%
-label-occupied-padding = 5
+label-occupied-foreground = ${colors.foreground-alt}
+label-occupied-padding = 2
 
 label-urgent = %name%!
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 5
+label-urgent-padding = 2
 
-label-empty = %name%
+label-empty =
 label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 5
+label-empty-padding = 2
 
 ; Separator in between workspaces
 ; label-separator = |
@@ -367,7 +369,7 @@ format-disconnected =
 
 ramp-signal-0 = 
 ramp-signal-1 = 
-ramp-signal-2 = 📡  
+ramp-signal-2 = 📡
 ramp-signal-3 = 📡
 ramp-signal-4 = 📡
 ramp-signal-foreground = ${colors.foreground-alt}
