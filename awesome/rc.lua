@@ -14,7 +14,7 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
--- local eminent = require("eminent")
+local eminent = require("eminent")
 local battery = require("widgets/battery")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
@@ -194,7 +194,7 @@ awful.screen.connect_for_each_screen(function(s)
 	-- Each screen has its own tag table.
 	-- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
-	awful.tag({ "1:", "2:뮻", "", "", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+	awful.tag({ "1: ", "2:뮻 ", "3: ", "4: ", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
 	-- Create a promptbox for each screen
 	s.mypromptbox = awful.widget.prompt()
@@ -223,11 +223,11 @@ awful.screen.connect_for_each_screen(function(s)
 	})
 
 	-- Create a tasklist widget
-	s.mytasklist = awful.widget.tasklist({
-		screen = s,
-		filter = awful.widget.tasklist.filter.currenttags,
-		buttons = tasklist_buttons,
-	})
+	-- s.mytasklist = awful.widget.tasklist({
+	-- 	screen = s,
+	-- 	filter = awful.widget.tasklist.filter.currenttags,
+	-- 	buttons = tasklist_buttons,
+	-- })
 
 	-- Create the wibox
 	s.mywibox = awful.wibar({
@@ -240,7 +240,7 @@ awful.screen.connect_for_each_screen(function(s)
 		border_width = beautiful.border_width,
 	})
 
-local seperator = wibox.widget.textbox('🔸')
+	local seperator = wibox.widget.textbox("🔸")
 	-- Add widgets to the wibox
 	s.mywibox:setup({
 		layout = wibox.layout.align.horizontal,
@@ -254,26 +254,26 @@ local seperator = wibox.widget.textbox('🔸')
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			-- mykeyboardlayout,
-            battery(),
-            -- TODO: Working On it
-            seperator,
-             -- one way to do that:
-            -- awful.widget.watch('bash -c "netspeed"', 0),
-            -- seperator,
-            awful.widget.watch('bash -c "sb-battery"', 0),
-            seperator,
-            wibox.widget.textbox("💡"),
-            awful.widget.watch('bash -c "brightness"', 0),
-            seperator,
-             -- another way:
-             -- awful.widget.watch('sensors', 15, function(widget, stdout)
-             --   for line in stdout:gmatch("[^\r\n]+") do
-             --     if line:match("temp1") then
-             --       widget:set_text(line)
-             --       return
-             --     end
-               -- end
-             -- end),
+			battery(),
+			-- TODO: Working On it
+			seperator,
+			-- one way to do that:
+			-- awful.widget.watch('bash -c "netspeed"', 0),
+			-- seperator,
+			-- awful.widget.watch('bash -c "sb-battery"', 0),
+			seperator,
+			wibox.widget.textbox("💡"),
+			-- awful.widget.watch('bash -c "brightness"', 0),
+			seperator,
+			-- another way:
+			-- awful.widget.watch('sensors', 15, function(widget, stdout)
+			--   for line in stdout:gmatch("[^\r\n]+") do
+			--     if line:match("temp1") then
+			--       widget:set_text(line)
+			--       return
+			--     end
+			-- end
+			-- end),
 			mytextclock,
 			s.mylayoutbox,
 			wibox.widget.systray(),
@@ -326,14 +326,14 @@ local globalkeys = gears.table.join(
 		awful.screen.focus_relative(-1)
 	end, { description = "focus the previous screen", group = "screen" }),
 	awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
-	-- awful.key({ modkey,           }, "Tab",
-	--     function ()
-	--         awful.client.focus.history.previous()
-	--         if client.focus then
-	--             client.focus:raise()
-	--         end
-	--     end,
-	-- {description = "go back", group = "client"}),
+	awful.key({ modkey,           }, "Tab",
+	    function ()
+	        awful.client.focus.history.previous()
+	        if client.focus then
+	            client.focus:raise()
+	        end
+	    end,
+	{description = "go back", group = "client"}),
 
 	-- Standard program
 	awful.key({ modkey }, "Return", function()
@@ -389,8 +389,8 @@ local globalkeys = gears.table.join(
 	--               }
 	--           end,
 	--           {description = "lua execute prompt", group = "awesome"}),
-	-- Menubar
-	awful.key({ modkey }, "p", function()
+	-- Menubar TODO: not yet used
+	awful.key({ modkey }, "-", function()
 		menubar.show()
 	end, { description = "show the menubar", group = "launcher" })
 )
@@ -404,7 +404,7 @@ local clientkeys = gears.table.join(
 		c:kill()
 	end, { description = "close", group = "client" }),
 	awful.key(
-		{ modkey, "Control" },
+		{ modkey, "Shift" },
 		"space",
 		awful.client.floating.toggle,
 		{ description = "toggle floating", group = "client" }
@@ -418,11 +418,11 @@ local clientkeys = gears.table.join(
 	awful.key({ modkey }, "t", function(c)
 		c.ontop = not c.ontop
 	end, { description = "toggle keep on top", group = "client" }),
-	awful.key({ modkey }, "n", function(c)
-		-- The client currently has the input focus, so it cannot be
-		-- minimized, since minimized clients can't have the focus.
-		c.minimized = true
-	end, { description = "minimize", group = "client" }),
+	-- awful.key({ modkey }, "n", function(c)
+	-- 	-- The client currently has the input focus, so it cannot be
+	-- 	-- minimized, since minimized clients can't have the focus.
+	-- 	c.minimized = true
+	-- end, { description = "minimize", group = "client" }), TODO:
 	awful.key({ modkey }, "m", function(c)
 		c.maximized = not c.maximized
 		c:raise()
@@ -627,4 +627,4 @@ end)
 -- Gaps
 beautiful.useless_gap = 5
 --Auto Start
-awful.spawn(terminal.."-e nitrogen --restore")
+awful.spawn(terminal .. "-e nitrogen --restore")
