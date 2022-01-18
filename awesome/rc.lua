@@ -15,11 +15,36 @@ local naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local eminent = require("eminent")
-local battery = require("widgets/battery")
+local dashCal = require("my-widgets.calendar")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 require("awful.hotkeys_popup.keys")
 
+local dashboardBoxshape = function(cr, width, height)
+	gears.shape.rounded_rect(cr, width, height, 10)
+end
+local makeDashboardBox = function(xval, yval, wval, hval)
+	local box = wibox({
+		--widget =
+		x = xval,
+		y = yval,
+		width = wval,
+		screen = s,
+		height = hval,
+		align = "center",
+		valign = "center",
+		visible = false,
+		shape = dashboardBoxshape,
+		bg = "#12345600",
+	})
+	box.type = "dock"
+	return box
+end
+
+-- Draws all the boxes needed for the dashboard
+--			(Xpos, Ypos, Width, Height)
+local dsbdCalendar = makeDashboardBox(150, 150, 455, 600)
+dsbdCalendar.widget = dashCal
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -126,8 +151,8 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- local mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
--- Create a textclock widget
-local mytextclock = wibox.widget.textclock()
+-- Create a textclock widget with the current time 12 hour format
+local mytextclock = wibox.widget.textclock([[%a %b %d %l:%M %p]], 1)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -194,7 +219,7 @@ awful.screen.connect_for_each_screen(function(s)
 	-- Each screen has its own tag table.
 	-- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
-	awful.tag({ "1: ", "2:뮻 ", "3: ", "4: ", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+	awful.tag({ "1: ", "2:뮻 ", "3:🖿 ", "4:뮪 ", "5:못 ", "6: ", "7:몪" }, s, awful.layout.layouts[1])
 
 	-- Create a promptbox for each screen
 	s.mypromptbox = awful.widget.prompt()
@@ -241,6 +266,11 @@ awful.screen.connect_for_each_screen(function(s)
 	})
 
 	local seperator = wibox.widget.textbox("🔸")
+	local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+	local batteryarc_widget = require("awesome-wm-widgets.batteryarc-widget.batteryarc")
+	local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
+	local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+	local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
 	-- Add widgets to the wibox
 	s.mywibox:setup({
 		layout = wibox.layout.align.horizontal,
@@ -254,26 +284,40 @@ awful.screen.connect_for_each_screen(function(s)
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
 			-- mykeyboardlayout,
-			battery(),
-			-- TODO: Working On it
+			-- TODO: Working On it------------------------------------------------------------------
+			--[[ awful.widget.watch('bash -c "netspeed"', 1),
 			seperator,
-			-- one way to do that:
-			-- awful.widget.watch('bash -c "netspeed"', 0),
-			-- seperator,
-			-- awful.widget.watch('bash -c "sb-battery"', 0),
+			awful.widget.watch('bash -c "sb-battery"', 15),
 			seperator,
-			wibox.widget.textbox("💡"),
-			-- awful.widget.watch('bash -c "brightness"', 0),
+            wibox.widget.textbox("💡"),
+			awful.widget.watch('bash -c "brightness"', 1),
 			seperator,
-			-- another way:
-			-- awful.widget.watch('sensors', 15, function(widget, stdout)
-			--   for line in stdout:gmatch("[^\r\n]+") do
-			--     if line:match("temp1") then
-			--       widget:set_text(line)
-			--       return
-			--     end
-			-- end
-			-- end),
+            wibox.widget.textbox("🔊"),
+			awful.widget.watch('bash -c "volume"', 1),
+			seperator, ]]
+			-- another way:-------------------------------------------------------------------------
+			-- NOTE: Someone else widget
+			-- battery_widget(),
+			seperator,
+			net_speed_widget(),
+			seperator,
+			batteryarc_widget({
+				show_current_level = true,
+				arc_thickness = 1,
+				show_notification_mode = "on_click",
+			}),
+			seperator,
+			brightness_widget({
+				type = "icon_and_text",
+				program = "xbacklight",
+				step = 5,
+			}),
+			seperator,
+			volume_widget({
+				widget_type = "icon_and_text",
+				device = "default",
+			}),
+			seperator,
 			mytextclock,
 			s.mylayoutbox,
 			wibox.widget.systray(),
@@ -294,10 +338,37 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 local tags = awful.screen.focused().selected_tags
+-- raise focused client
+local function raise_client()
+	if client.focus then
+		client.focus:raise()
+	end
+end
 local globalkeys = gears.table.join(
 	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
-	awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
-	awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
+	-- awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
+	-- awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
+	-- NOTE: Added Own Mappings for moving
+	awful.key({ modkey }, "Down", function()
+		awful.client.focus.bydirection("down")
+		raise_client()
+	end, { description = "focus down", group = "client" }),
+	awful.key({ modkey }, "Up", function()
+		awful.client.focus.bydirection("up")
+		raise_client()
+	end, { description = "focus up", group = "client" }),
+	awful.key({ modkey }, "Left", function()
+		awful.client.focus.bydirection("left")
+		raise_client()
+	end, { description = "focus left", group = "client" }),
+	awful.key({ modkey }, "Right", function()
+		awful.client.focus.bydirection("right")
+		raise_client()
+	end, { description = "focus right", group = "client" }),
+	awful.key({ modkey, "Shift" }, "w", function()
+        dsbdCalendar.visible = true
+	end, { description = "open firefox", group = "launcher" }),
+	-- NOTE:End My own mappings keeping this bevause it might effect in future---------------------------
 	awful.key({ modkey }, "bracketleft", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey }, "bracketright", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	awful.key({ modkey }, "Tab", awful.tag.history.restore, { description = "go back", group = "tag" }),
@@ -326,14 +397,12 @@ local globalkeys = gears.table.join(
 		awful.screen.focus_relative(-1)
 	end, { description = "focus the previous screen", group = "screen" }),
 	awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
-	awful.key({ modkey,           }, "Tab",
-	    function ()
-	        awful.client.focus.history.previous()
-	        if client.focus then
-	            client.focus:raise()
-	        end
-	    end,
-	{description = "go back", group = "client"}),
+	awful.key({ modkey }, "Tab", function()
+		awful.client.focus.history.previous()
+		if client.focus then
+			client.focus:raise()
+		end
+	end, { description = "go back", group = "client" }),
 
 	-- Standard program
 	awful.key({ modkey }, "Return", function()
@@ -363,9 +432,9 @@ local globalkeys = gears.table.join(
 	awful.key({ modkey }, "space", function()
 		awful.layout.inc(1)
 	end, { description = "select next", group = "layout" }),
-	awful.key({ modkey, "Shift" }, "space", function()
-		awful.layout.inc(-1)
-	end, { description = "select previous", group = "layout" }),
+	-- awful.key({ modkey, "Shift" }, "space", function()
+	-- 	awful.layout.inc(-1)TODO: changed default
+	-- end, { description = "select previous", group = "layout" }),
 
 	awful.key({ modkey, "Control" }, "n", function()
 		local c = awful.client.restore()
@@ -555,7 +624,7 @@ awful.rules.rules = {
 	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = false } },
 
 	-- Set Brave to always map on the tag named "2" on screen 1.
-	{ rule = { class = "Brave-browser" }, properties = { screen = 1, tag = "2:뮻" } },
+	{ rule = { class = "Brave-browser" }, properties = { screen = 1, tag = "2:뮻 " } }, -- space sensitive 😅
 }
 -- }}}
 
@@ -623,8 +692,22 @@ end)
 client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
+client.connect_signal("property::floating", function(c)
+	if c.floating then
+		c.border_width = 0
+		c:geometry({
+			width = 920,
+			height = 640,
+			-- position centered on screen
+			x = c.screen.geometry.x + (c.screen.geometry.width - 920) / 2,
+			y = c.screen.geometry.y + (c.screen.geometry.height - 640) / 2,
+		})
+	else
+		c.border_width = beautiful.border_width
+	end
+end)
 -- }}}
 -- Gaps
-beautiful.useless_gap = 5
+-- beautiful.useless_gap = 5
 --Auto Start
 awful.spawn(terminal .. "-e nitrogen --restore")
