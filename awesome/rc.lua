@@ -218,7 +218,7 @@ end
 
 awful.screen.connect_for_each_screen(function(s)
 	-- Wallpaper
-	set_wallpaper(s)
+	set_wallpaper()
 
 	-- Each screen has its own tag table.
 	-- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
@@ -260,6 +260,9 @@ awful.screen.connect_for_each_screen(function(s)
 		screen = s,
 		filter = awful.widget.tasklist.filter.currenttags,
 		buttons = tasklist_buttons,
+        style = {
+            fg_focus = "#C7A8A8",
+        },
 	})
 
 	-- Create the wibox
@@ -617,11 +620,11 @@ awful.rules.rules = {
 			},
 			class = {
 				"Arandr",
-				"Blueman-manager",
+				-- "Blueman-manager",
 				"Gpick",
 				"Kruler",
 				"MessageWin", -- kalarm.
-				"Sxiv",
+				-- "Sxiv",
 				"Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
 				"Wpa_gui",
 				"veromix",
@@ -647,6 +650,8 @@ awful.rules.rules = {
 
 	-- Set Brave to always map on the tag named "2" on screen 1.
 	{ rule = { class = "Brave-browser" }, properties = { screen = 1, tag = "2:뮻 " } }, -- space sensitive 😅
+    { rule = { class = "Pcmanfm" }, properties = { screen = 1, tag =  "3: ", tiling = true } },
+    { rule = { name = "ranger" }, properties = { floating = true , width = 1080 , height = 720 ,x = 500,y = 200} },
 }
 -- }}}
 
@@ -714,22 +719,22 @@ end)
 client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
-client.connect_signal("property::floating", function(c)
-	if c.floating then
-		c.border_width = 0
-		c:geometry({
-			width = 920,
-			height = 640,
-			-- position centered on screen
-			x = c.screen.geometry.x + (c.screen.geometry.width - 920) / 2,
-			y = c.screen.geometry.y + (c.screen.geometry.height - 640) / 2,
-		})
-	else
-		c.border_width = beautiful.border_width
-	end
-end)
+-- client.connect_signal("property::floating", function(c)
+-- 	if c.floating then
+-- 		c.border_width = 1
+-- 		c:geometry({
+-- 			width = 1080,
+-- 			height = 720,
+-- 			-- position centered on screen
+-- 			x = c.screen.geometry.x + (c.screen.geometry.width - 1080) / 2,
+-- 			y = c.screen.geometry.y + (c.screen.geometry.height - 720) / 2,
+-- 		})
+-- 	else
+-- 		c.border_width = beautiful.border_width
+-- 	end
+-- end)
 -- }}}
 -- Gaps
 -- beautiful.useless_gap = 5
 --Auto Start
-awful.spawn(terminal .. "-e nitrogen --restore")
+-- awful.spawn(terminal .. "-e nitrogen --restore")
