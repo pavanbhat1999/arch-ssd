@@ -1,6 +1,7 @@
 .Xmodmap
 .dwm.log
 firefox/
+volumeicon/
 qBittorrent/
 uGet/
 FZF/
