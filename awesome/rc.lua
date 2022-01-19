@@ -36,7 +36,7 @@ local makeDashboardBox = function(xval, yval, wval, hval)
 		visible = false,
 		shape = dashboardBoxshape,
 		bg = "#002731",
-        opacity = 0.75,
+		opacity = 0.75,
 	})
 	box.type = "dock"
 	return box
@@ -260,9 +260,9 @@ awful.screen.connect_for_each_screen(function(s)
 		screen = s,
 		filter = awful.widget.tasklist.filter.currenttags,
 		buttons = tasklist_buttons,
-        style = {
-            fg_focus = "#C7A8A8",
-        },
+		style = {
+			fg_focus = "#C7A8A8",
+		},
 	})
 
 	-- Create the wibox
@@ -497,6 +497,7 @@ local clientkeys = gears.table.join(
 	awful.key({ modkey, "Shift" }, "q", function(c)
 		c:kill()
 	end, { description = "close", group = "client" }),
+	-- NOTE: Custom keybindings
 	awful.key(
 		{ modkey, "Shift" },
 		"space",
@@ -650,8 +651,14 @@ awful.rules.rules = {
 
 	-- Set Brave to always map on the tag named "2" on screen 1.
 	{ rule = { class = "Brave-browser" }, properties = { screen = 1, tag = "2:뮻 " } }, -- space sensitive 😅
-    { rule = { class = "Pcmanfm" }, properties = { screen = 1, tag =  "3: ", tiling = true } },
-    { rule = { name = "ranger" }, properties = { floating = true , width = 1080 , height = 720 ,x = 500,y = 200} },
+	{ rule = { class = "Pcmanfm" }, properties = { screen = 1, tag = "3: ", tiling = true } },
+	{
+		rule = { name = "ranger" },
+		properties = { titlebars_enabled = false, floating = true, width = 1080, height = 720, x = 500, y = 200 },
+	},
+	-- make mpv sticky
+	{ rule = { class = "mpv" }, properties = { fullscreen = true, screen = 1, tag = "5: " } },
+	-- { rule = { class = "mpv" }, properties = { sticky = true } },
 }
 -- }}}
 
@@ -718,6 +725,18 @@ client.connect_signal("focus", function(c)
 end)
 client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
+end)
+-- HACK: show mpv-----------------------------------------------------------------------------------
+client.connect_signal("property::floating", function(c)
+	if c.floating then
+		if c.class == "mpv" then
+			awful.titlebar.show(c)
+		else
+            awful.titlebar.hide(c)
+		end
+	else
+		awful.titlebar.hide(c)
+	end
 end)
 -- client.connect_signal("property::floating", function(c)
 -- 	if c.floating then
