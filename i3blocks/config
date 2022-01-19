@@ -5,13 +5,13 @@ interval=1
 command=echo -n "🔥" && $HOME/bin/scripts/window-manager/temp
 interval=60
 [brightness]
-command=echo -n "💡" && $HOME/bin/scripts/window-manager/brightness
+command=$HOME/bin/scripts/window-manager/brightness
 interval=1
 [volume]
 command=echo -n "" && $HOME/bin/scripts/window-manager/sb-volume
 interval=1
 [battery]
-command=sb-battery /* appended to Path */
+command=sb-battery
 interval=1
 [disk]
 command=echo -n "💾" && $HOME/bin/scripts/window-manager/disk.sh

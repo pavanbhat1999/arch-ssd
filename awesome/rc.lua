@@ -35,7 +35,8 @@ local makeDashboardBox = function(xval, yval, wval, hval)
 		valign = "center",
 		visible = false,
 		shape = dashboardBoxshape,
-		bg = "#12345600",
+		bg = "#002731",
+        opacity = 0.75,
 	})
 	box.type = "dock"
 	return box
@@ -197,29 +198,36 @@ local tasklist_buttons = gears.table.join(
 	end)
 )
 
-local function set_wallpaper(s)
-	-- Wallpaper
-	if beautiful.wallpaper then
-		local wallpaper = beautiful.wallpaper
-		-- If wallpaper is a function, call it with the screen
-		if type(wallpaper) == "function" then
-			wallpaper = wallpaper(s)
-		end
-		gears.wallpaper.maximized(wallpaper, s, true)
-	end
+-- local function set_wallpaper(s)
+-- 	-- Wallpaper
+-- 	if beautiful.wallpaper then
+-- 		local wallpaper = beautiful.wallpaper
+-- 		-- If wallpaper is a function, call it with the screen
+-- 		if type(wallpaper) == "function" then
+-- 			wallpaper = wallpaper(s)
+-- 		end
+-- 		gears.wallpaper.maximized(wallpaper, s, true)
+-- 	end
+-- end
+local function set_wallpaper()
+	awful.spawn.with_shell("nitrogen --restore")
 end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
-screen.connect_signal("property::geometry", set_wallpaper)
+-- screen.connect_signal("property::geometry", set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
 	-- Wallpaper
-	-- set_wallpaper(s)
+	set_wallpaper(s)
 
 	-- Each screen has its own tag table.
 	-- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
-	awful.tag({ "1: ", "2:뮻 ", "3:🖿 ", "4:뮪 ", "5:못 ", "6: ", "7:몪" }, s, awful.layout.layouts[1])
+	awful.tag(
+		{ "1: ", "2:뮻 ", "3: ", "4:뮪 ", "5: ", "6: ", "7:못 ", "8: " },
+		s,
+		awful.layout.layouts[1]
+	)
 
 	-- Create a promptbox for each screen
 	s.mypromptbox = awful.widget.prompt()
@@ -248,11 +256,11 @@ awful.screen.connect_for_each_screen(function(s)
 	})
 
 	-- Create a tasklist widget
-	-- s.mytasklist = awful.widget.tasklist({
-	-- 	screen = s,
-	-- 	filter = awful.widget.tasklist.filter.currenttags,
-	-- 	buttons = tasklist_buttons,
-	-- })
+	s.mytasklist = awful.widget.tasklist({
+		screen = s,
+		filter = awful.widget.tasklist.filter.currenttags,
+		buttons = tasklist_buttons,
+	})
 
 	-- Create the wibox
 	s.mywibox = awful.wibar({
@@ -271,7 +279,13 @@ awful.screen.connect_for_each_screen(function(s)
 	local volume_widget = require("awesome-wm-widgets.volume-widget.volume")
 	local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
 	local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
-	-- Add widgets to the wibox
+	local my_net_speed = require("my-widgets.netspeed")
+	local my_temp = require("my-widgets.temp")
+	local my_brightness = require("my-widgets.brightness")
+	local my_volume = require("my-widgets.volume")
+	local my_memory = require("my-widgets.memory")
+	local my_battery = require("my-widgets.battery")
+	local my_clock = require("my-widgets.clock")
 	s.mywibox:setup({
 		layout = wibox.layout.align.horizontal,
 		{ -- Left widgets
@@ -299,26 +313,35 @@ awful.screen.connect_for_each_screen(function(s)
 			-- NOTE: Someone else widget
 			-- battery_widget(),
 			seperator,
-			net_speed_widget(),
+			my_net_speed,
+			-- net_speed_widget(),
 			seperator,
-			batteryarc_widget({
-				show_current_level = true,
-				arc_thickness = 1,
-				show_notification_mode = "on_click",
-			}),
+			my_temp,
 			seperator,
-			brightness_widget({
-				type = "icon_and_text",
-				program = "xbacklight",
-				step = 5,
-			}),
+			-- brightness_widget({
+			-- 	type = "icon_and_text",
+			-- 	program = "xbacklight",
+			-- 	step = 5,
+			-- }),
+			my_brightness,
 			seperator,
-			volume_widget({
-				widget_type = "icon_and_text",
-				device = "default",
-			}),
+			-- volume_widget({
+			-- 	widget_type = "text_and_icon",
+			-- 	device = "default",
+			-- }),
+			my_volume,
 			seperator,
-			mytextclock,
+			my_memory,
+			seperator,
+			-- batteryarc_widget({
+			-- 	show_current_level = true,
+			-- 	arc_thickness = 1,
+			-- 	show_notification_mode = "on_click",
+			-- }),
+			my_battery,
+			seperator,
+			my_clock,
+			-- mytextclock,
 			s.mylayoutbox,
 			wibox.widget.systray(),
 		},
@@ -366,8 +389,12 @@ local globalkeys = gears.table.join(
 		raise_client()
 	end, { description = "focus right", group = "client" }),
 	awful.key({ modkey, "Shift" }, "w", function()
-        dsbdCalendar.visible = true
-	end, { description = "open firefox", group = "launcher" }),
+		if dsbdCalendar.visible then
+			dsbdCalendar.visible = false
+		elseif dsbdCalendar.visible == false then
+			dsbdCalendar.visible = true
+		end
+	end, { description = "open calender", group = "launcher" }),
 	-- NOTE:End My own mappings keeping this bevause it might effect in future---------------------------
 	awful.key({ modkey }, "bracketleft", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	awful.key({ modkey }, "bracketright", awful.tag.viewnext, { description = "view next", group = "tag" }),
