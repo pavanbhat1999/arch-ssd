@@ -273,7 +273,7 @@ awful.screen.connect_for_each_screen(function(s)
 		bg = beautiful.bg_normal,
 		position = "top",
 		-- border_color = beautiful.border_focus,
-		border_width = beautiful.border_width,
+		-- border_width = beautiful.border_width,
 	})
 
 	local seperator = wibox.widget.textbox("🔸")
@@ -340,7 +340,7 @@ awful.screen.connect_for_each_screen(function(s)
 			seperator,
 			my_clock,
 			-- mytextclock,
-			s.mylayoutbox,
+			-- s.mylayoutbox,
 			wibox.widget.systray(),
 		},
 	})
@@ -422,12 +422,12 @@ local globalkeys = gears.table.join(
 		awful.screen.focus_relative(-1)
 	end, { description = "focus the previous screen", group = "screen" }),
 	awful.key({ modkey }, "u", awful.client.urgent.jumpto, { description = "jump to urgent client", group = "client" }),
-	awful.key({ modkey }, "Tab", function()
-		awful.client.focus.history.previous()
-		if client.focus then
-			client.focus:raise()
-		end
-	end, { description = "go back", group = "client" }),
+	-- awful.key({ modkey }, "Tab", function()
+	-- 	awful.client.focus.history.previous()
+	-- 	if client.focus then
+	-- 		client.focus:raise()
+	-- 	end
+	-- end, { description = "go back", group = "client" }),
 
 	-- Standard program
 	awful.key({ modkey }, "Return", function()
@@ -732,7 +732,7 @@ client.connect_signal("property::floating", function(c)
 		if c.class == "mpv" then
 			awful.titlebar.show(c)
 		else
-            awful.titlebar.hide(c)
+			awful.titlebar.hide(c)
 		end
 	else
 		awful.titlebar.hide(c)
