@@ -224,7 +224,7 @@ awful.screen.connect_for_each_screen(function(s)
 	-- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
 	awful.tag(
-		{ "1: ", "2:뮻 ", "3: ", "4:뮪 ", "5: ", "6: ", "7:못 ", "8: " },
+		{ "1. ", "2.뮻 ", "3. ", "4.뮪 ", "5. ", "6. ", "7.못 ", "8. " },
 		s,
 		awful.layout.layouts[1]
 	)
@@ -273,7 +273,7 @@ awful.screen.connect_for_each_screen(function(s)
 		bg = beautiful.bg_normal,
 		position = "top",
 		-- border_color = beautiful.border_focus,
-		border_width = beautiful.border_width,
+		-- border_width = beautiful.border_width,
 	})
 
 	local seperator = wibox.widget.textbox("🔸")
@@ -650,14 +650,14 @@ awful.rules.rules = {
 	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = false } },
 
 	-- Set Brave to always map on the tag named "2" on screen 1.
-	{ rule = { class = "Brave-browser" }, properties = { screen = 1, tag = "2:뮻 " } }, -- space sensitive 😅
-	{ rule = { class = "Pcmanfm" }, properties = { screen = 1, tag = "3: ", tiling = true } },
+	{ rule = { class = "Brave-browser" }, properties = { screen = 1, tag = "2.뮻 " } }, -- space sensitive 😅
+	{ rule = { class = "Pcmanfm" }, properties = { screen = 1, tag = "3. ", tiling = true } },
 	{
 		rule = { name = "ranger" },
 		properties = { titlebars_enabled = false, floating = true, width = 1080, height = 720, x = 500, y = 200 },
 	},
 	-- make mpv sticky
-	{ rule = { class = "mpv" }, properties = { fullscreen = true, screen = 1, tag = "5: " } },
+	{ rule = { class = "mpv" }, properties = { fullscreen = true, screen = 1, tag = "5. " } },
 	-- { rule = { class = "mpv" }, properties = { sticky = true } },
 }
 -- }}}

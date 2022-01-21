@@ -13,11 +13,11 @@ local theme = {}
 
 theme.font          = "Fira Code Mono Regular 13"
 
-theme.bg_normal     = "#22222200"
-theme.bg_focus      = "#535d6c00"
+theme.bg_normal     = "#00273100"
+theme.bg_focus      = "#00273100"
 theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
-theme.bg_systray    = "#00000000"
+theme.bg_systray    = "#00273100"
 
 theme.fg_normal     = "#aaaaaa"
 theme.fg_focus      = "#BD3612"
