@@ -13,21 +13,21 @@ local theme = {}
 
 theme.font          = "Fira Code Mono Regular 13"
 
-theme.bg_normal     = "#22222200"
-theme.bg_focus      = "#535d6c00"
-theme.bg_urgent     = "#ff0000"
+theme.bg_normal     = "#002B36"
+theme.bg_focus      = "#002B36"
+theme.bg_urgent     = "#BC1717"
 theme.bg_minimize   = "#444444"
-theme.bg_systray    = "#002731"
+theme.bg_systray    = "#002B36"
 
 theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#BD3612"
+theme.fg_focus      = "#b58900"
 theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap   = dpi(0)
-theme.border_width  = dpi(1)
-theme.border_normal = "#080707"
-theme.border_focus  = "#BD3612"
+theme.border_width  = dpi(2)
+theme.border_normal = "#002b36"
+theme.border_focus  = "#b58900"
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
