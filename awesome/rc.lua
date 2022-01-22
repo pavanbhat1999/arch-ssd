@@ -758,3 +758,5 @@ end)
 -- beautiful.useless_gap = 5
 --Auto Start
 -- awful.spawn(terminal .. "-e nitrogen --restore")
+-- Make a wallpaper slideshow
+-- awful.widget.watch("bash -c 'change-wallpaper.sh'",15)
