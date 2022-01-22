@@ -1,7 +1,12 @@
 export PATH=~/bin:$PATH
+export PATH=/home/root99/bin/appimages:$PATH
+export PATH=/home/root99/bin/rofi-scripts:$PATH
+export PATH=/home/root99/bin/scripts:$PATH
+export PATH=/home/root99/bin/themes:$PATH
 export PATH=~/bin/CustomScripts:$PATH
 export PATH=~/bin/statusbar-luke:$PATH
 export PATH=~/bin/mystatus:$PATH
+export PATH=/home/root99/bin/scripts/:$PATH
 export PATH=$HOME/.config/npm-global:$PATH
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache

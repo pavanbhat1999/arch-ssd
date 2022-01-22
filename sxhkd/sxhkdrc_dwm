@@ -65,7 +65,7 @@ alt + b
 alt + k
     kitty -e nvim /home/root99/.config/sxhkd/sxhkdrc_dwm
 alt + m
-    $HOME/bin/rofi-beats
+    rofi-beats
 #alt + s
     #tdrop -ma -w -4  -s dropdown alacritty
 # alt + x
