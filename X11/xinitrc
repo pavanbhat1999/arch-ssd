@@ -48,7 +48,7 @@ export SSH_AUTH_SOCK
 #exec /usr/bin/dbus-launch &
 picom &
 # nitrogen --restore &
-#dwmblocks &
+# dwmblocks &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 sxhkd -c /home/root99/.config/sxhkd/sxhkdrc_dwm &
 greenclip daemon &
@@ -60,12 +60,12 @@ dunst &
 xsetroot -cursor_name left_ptr &
 #xrandr --dpi 108
 # xmodmap /home/root99/.config/.Xmodmap
-#while true; do
-    ## Log stderror to a file
-    #dwm 2> ~/.config/.dwm.log
-    ## No error logging
-    ##dwm >/dev/null 2>&1
-#done
+# while true; do
+#     # Log stderror to a file
+#     dwm 2> ~/.config/.dwm.log
+#     # No error logging
+#     dwm >/dev/null 2>&1
+# done
 
 #exec qtile start
 #exec xmonad

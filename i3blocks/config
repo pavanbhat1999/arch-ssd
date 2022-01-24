@@ -1,21 +1,21 @@
 [netspeed]
-command= $HOME/bin/scripts/window-manager/netspeed /* TODO: make everything in path */
+command=netspeed
 interval=1
 [temparature]
-command=echo -n "🔥" && $HOME/bin/scripts/window-manager/temp
+command=echo -n "🔥" && temp
 interval=60
 [brightness]
-command=$HOME/bin/scripts/window-manager/brightness
+command=brightness
 interval=1
 [volume]
-command=echo -n "" && $HOME/bin/scripts/window-manager/sb-volume
+command=sb-volume
 interval=1
 [battery]
 command=sb-battery
 interval=1
 [disk]
-command=echo -n "💾" && $HOME/bin/scripts/window-manager/disk.sh
+command=disk
 interval=5
 [clock]
-command=echo -n "📅" && $HOME/bin/scripts/window-manager/clock
+command=echo -n "📅" && clock
 interval=10
