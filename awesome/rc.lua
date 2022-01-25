@@ -730,8 +730,10 @@ end)
 -- HACK: show mpv-----------------------------------------------------------------------------------
 client.connect_signal("property::floating", function(c)
 	if c.floating then
-		if c.class == "mpv" then
+		if c.class == "mpv" or c.class == "Brave-browser" then
 			awful.titlebar.show(c)
+            -- keep this always on top
+            c.ontop = true
 		else
 			awful.titlebar.hide(c)
 		end

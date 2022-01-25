@@ -2,7 +2,7 @@
 echo "✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗"
 #fortune | cowsay  | lolcat
 echo "✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗"
-figlet Arch
+figlet -f ANSI\ Shadow Arch
 autoload -U colors && colors
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.config/.histfile
@@ -55,7 +55,7 @@ alias dot='cd $HOME/.config/'
 #export JAVA_HOME='/usr/lib/jvm/java-11-openjdk'
 #export PATH=$JAVA_HOME/bin:$PATH
 #export PATH=$HOME/.config/rofi/bin:$PATH
-#bindkey -v
+# bindkey -v
 #if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -le 4 ]; then
   #exec startx
 #fi
