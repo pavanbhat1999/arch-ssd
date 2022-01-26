@@ -12,6 +12,160 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
+-- add sound for notification
+function naughty.config.notify_callback(args)
+        awful.spawn.easy_async_with_shell("noti", function() end)
+    return args
+end
+-- local some_widget =
+-- {
+--     {
+--             {
+--                 {
+--                     naughty.widget.icon,
+--                     {
+--                         naughty.widget.title,
+--                         naughty.widget.message,
+--                     valign = "center",
+--                     halign = "center",
+--                     forced_height = 100,
+--                     forced_width = 500,
+--                         spacing = 4,
+--                         layout  = wibox.layout.align.vertical,
+--                     },
+--                     fill_space = true,
+--                     spacing    = 4,
+--                     valign = "top",
+--                     halign = "center",
+--                     layout     = wibox.layout.align.horizontal,
+--                 },
+--                 naughty.list.actions,
+--                 spacing = 10,
+--                 layout  = wibox.layout.align.horizontal,
+--             },
+--             margins = beautiful.notification_margin,
+--             widget  = wibox.container.margin,
+--         },
+--         id     = "background_role",
+--         widget = naughty.container.background,
+--     }
+-- -- naughty layout box
+-- naughty.connect_signal("request::display", function(n)
+--     naughty.layout.box {
+--         notification = n,
+--         widget_template = some_widget,
+--     }
+-- end)
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
+-- local icon_size = dpi(150)
+-- local default_template = {
+-- 	{
+-- 		----- Icon -----
+-- 		--naughty.widget.icon,
+-- 		{ ----- Icon -----
+-- 			forced_width = icon_size,
+-- 			forced_height = icon_size,
+--
+-- 			widget = naughty.widget.icon
+-- 		},
+-- 		{
+-- 			{
+-- 				{ ---- Title -----
+-- 					naughty.widget.title,
+--
+-- 					valign = "center",
+-- 					halign = "center",
+--
+-- 					widget = wibox.container.place
+-- 				},
+--
+-- 				{ ----- Body/Message -----
+-- 					naughty.widget.message,
+--
+-- 					valign = "top",
+-- 					halign = "center",
+--
+-- 					widget = wibox.container.place
+-- 				},
+--
+-- 				layout = wibox.layout.align.vertical,
+-- 				expand = "outside",
+--
+-- 				},
+--
+-- 			margins = dpi(10),
+-- 			widget = wibox.container.margin,
+-- 		},
+-- 		layout = wibox.layout.align.horizontal,
+-- 	},
+--
+-- 	margins = dpi(10),
+-- 	widget = wibox.container.margin
+-- }
+--
+-- local template_without_icon = {
+-- 	{
+-- 		{
+-- 			{ ---- Title -----
+-- 				naughty.widget.title,
+--
+-- 				valign = "center",
+-- 				halign = "center",
+--                 forced_width = 500,
+--                 forced_height = 100,
+--
+--                 widget = naughty.container.background
+-- 				-- widget = wibox.container.place
+-- 			},
+--
+-- 			{ ----- Body/Message -----
+-- 				naughty.widget.message,
+--
+-- 				valign = "top",
+-- 				halign = "center",
+--
+--                 widget = naughty.container.background
+-- 			},
+--
+-- 			layout = wibox.layout.align.vertical,
+-- 			expand = "outside",
+--
+-- 			},
+--
+-- 		margins = dpi(10),
+-- 		widget = naughty.container.background
+-- 	},
+--
+-- 	margins = dpi(10),
+-- 	widget = wibox.container.margin
+-- }
+-- naughty.connect_signal("request::display", function(notification)
+--
+-- 	-- notification.timeout = 3
+-- 	notification.resident = false
+-- 	-- Only if there's an icon: Add the icon-widget
+-- 	if notification.icon == nil then
+-- 		naughty.layout.box {
+-- 			notification = notification,
+--
+-- 			border_width = dpi(5),
+-- 			screen = 1,
+--
+-- 			widget_template = template_without_icon
+-- 		}
+--
+-- 	else
+-- 		naughty.layout.box {
+-- 			notification = notification,
+--
+-- 			border_width = dpi(5),
+-- 			screen = 1,
+--
+-- 			widget_template = default_template
+-- 		}
+-- 	end
+-- end)
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 local eminent = require("eminent")
@@ -734,6 +888,7 @@ client.connect_signal("property::floating", function(c)
 			awful.titlebar.show(c)
             -- keep this always on top
             c.ontop = true
+			c.ontop = true
 		else
 			awful.titlebar.hide(c)
 		end

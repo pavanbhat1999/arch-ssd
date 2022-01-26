@@ -47,7 +47,7 @@ export SSH_AUTH_SOCK
 #esac
 #exec /usr/bin/dbus-launch &
 picom &
-# nitrogen --restore &
+nitrogen --restore &
 # dwmblocks &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 sxhkd -c /home/root99/.config/sxhkd/sxhkdrc_dwm &
@@ -71,6 +71,6 @@ xsetroot -cursor_name left_ptr &
 #exec xmonad
 #sudo mount /dev/sda6 arch-old
 # exec  ~/Downloads/i3-4.20_features/build/i3
-# exec i3
-exec awesome
+exec i3
+# exec awesome
 #exec bspwm

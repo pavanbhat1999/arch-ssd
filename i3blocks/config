@@ -3,7 +3,7 @@ command=netspeed
 interval=1
 [temparature]
 command=echo -n "🔥" && temp
-interval=60
+interval=15
 [brightness]
 command=brightness
 interval=1
@@ -15,7 +15,7 @@ command=sb-battery
 interval=1
 [disk]
 command=disk
-interval=5
+interval=60
 [clock]
 command=echo -n "📅" && clock
-interval=10
+interval=60

@@ -21,7 +21,7 @@
 background     = #00000000
 background-alt = #141313
 foreground-alt = #dfdfdf
-foreground     = #DA3B0E
+foreground     = #b58900
 primary        = #ffb52a
 secondary      = #e60053
 alert          = #bd2c40
