@@ -1,6 +1,8 @@
 .Xmodmap
 .dwm.log
 firefox/
+bashtop/
+zsh/powerlevel10k/
 volumeicon/
 awesome/awesome-wm-widgets1/
 1-test/
