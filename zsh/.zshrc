@@ -54,6 +54,7 @@ alias tls='trash-list'
 # alias tr='trash-restore'
 alias ggg='cd $HOME/Downloads/prbhat07'
 alias dot='cd $HOME/.config/'
+alias b='cd $HOME/bin'
 #export JAVA_HOME='/usr/lib/jvm/java-8-openjdk/jre'
 #export JAVA_HOME='/usr/lib/jvm/java-11-openjdk'
 #export PATH=$JAVA_HOME/bin:$PATH

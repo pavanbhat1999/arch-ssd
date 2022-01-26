@@ -50,10 +50,10 @@ XF86MonBrightnessUp
     xbacklight -inc 5
 XF86MonBrightnessDown
     xbacklight -dec 5
-super+y
-    import -window root $HOME/Downloads/Pictures/screenshot-`/bin/date +%Y%m%d-%H:%M:%S`.png
-super+x
-    import $HOME/Downloads/Pictures/screenshot-`/bin/date +%Y%m%d-%H:%M:%S`.png
+# super+y
+#     import -window root $HOME/Downloads/Pictures/screenshot-`/bin/date +%Y%m%d-%H:%M:%S`.png
+# super+x
+#     import $HOME/Downloads/Pictures/screenshot-`/bin/date +%Y%m%d-%H:%M:%S`.png
 super + alt + space
     kitty --title ranger ranger
 super + shift + e
