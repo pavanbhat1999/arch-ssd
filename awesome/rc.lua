@@ -372,8 +372,8 @@ end
 
 awful.screen.connect_for_each_screen(function(s)
 	-- Wallpaper
-	-- set_wallpaper()
-    gears.wallpaper.set("#002b31")
+	set_wallpaper()
+    -- gears.wallpaper.set("#002b31")
 
 	-- Each screen has its own tag table.
 	-- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
@@ -436,7 +436,7 @@ awful.screen.connect_for_each_screen(function(s)
 	local my_temp = require("my-widgets.temp")
 	local my_brightness = require("my-widgets.brightness")
 	local my_volume = require("my-widgets.volume")
-	-- local my_memory = require("my-widgets.memory")
+	local my_memory = require("my-widgets.memory")
 	local my_battery = require("my-widgets.battery")
 	-- local my_clock = require("my-widgets.clock")
 	s.mywibox:setup({
@@ -484,7 +484,7 @@ awful.screen.connect_for_each_screen(function(s)
 			-- }),
 			my_volume,
 			seperator,
-			-- my_memory,
+			my_memory,
 			seperator,
 			-- batteryarc_widget({
 			-- 	show_current_level = true,
@@ -657,6 +657,7 @@ local clientkeys = gears.table.join(
 		{ modkey, "Shift" },
 		"space",
 		awful.client.floating.toggle,
+        -- if floating is enabled, the client will be floating in middle of the screen with half of the width and height
 		{ description = "toggle floating", group = "client" }
 	),
 	awful.key({ modkey, "Control" }, "Return", function(c)
@@ -776,11 +777,11 @@ awful.rules.rules = {
 			},
 			class = {
 				"Arandr",
-				-- "Blueman-manager",
+				"Blueman-manager",
 				"Gpick",
 				"Kruler",
 				"MessageWin", -- kalarm.
-				-- "Sxiv",
+				"Sxiv",
 				"Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
 				"Wpa_gui",
 				"veromix",
@@ -887,7 +888,6 @@ client.connect_signal("property::floating", function(c)
 		if c.class == "mpv" or c.class == "Brave-browser" then
 			awful.titlebar.show(c)
             -- keep this always on top
-            c.ontop = true
 			c.ontop = true
 		else
 			awful.titlebar.hide(c)
@@ -896,23 +896,23 @@ client.connect_signal("property::floating", function(c)
 		awful.titlebar.hide(c)
 	end
 end)
--- client.connect_signal("property::floating", function(c)
--- 	if c.floating then
--- 		c.border_width = 1
--- 		c:geometry({
--- 			width = 1080,
--- 			height = 720,
--- 			-- position centered on screen
--- 			x = c.screen.geometry.x + (c.screen.geometry.width - 1080) / 2,
--- 			y = c.screen.geometry.y + (c.screen.geometry.height - 720) / 2,
--- 		})
--- 	else
--- 		c.border_width = beautiful.border_width
--- 	end
--- end)
--- }}}
+client.connect_signal("property::floating", function(c)
+	if c.floating then
+		c.border_width = 1
+		c:geometry({
+			width = 1080,
+			height = 720,
+			-- position centered on screen
+			x = c.screen.geometry.x + (c.screen.geometry.width - 1080) / 2,
+			y = c.screen.geometry.y + (c.screen.geometry.height - 720) / 2,
+		})
+	else
+		c.border_width = beautiful.border_width
+	end
+end)
 -- Gaps
--- beautiful.useless_gap = 5
+beautiful.useless_gap = 5
+beautiful.gap_single_client = false
 --Auto Start
 -- awful.spawn(terminal .. "-e nitrogen --restore")
 -- Make a wallpaper slideshow

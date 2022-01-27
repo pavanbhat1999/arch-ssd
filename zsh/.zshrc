@@ -1,8 +1,8 @@
 #pfetch | lolcat
-echo "✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗"
+# echo "✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗"
 #fortune | cowsay  | lolcat
-echo "✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗"
-figlet -f ANSI\ Shadow Arch
+# echo "✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗✗"
+# figlet -f ANSI\ Shadow Arch
 autoload -U colors && colors
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.config/.histfile

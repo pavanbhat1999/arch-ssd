@@ -7,7 +7,7 @@
 #super + Return
     #kitty
 #secondary terminal
-super + shift + Ctrl + Return
+super + shift + Return
     alacritty
 # program launcher
 super + r
@@ -76,3 +76,5 @@ super + shift + ctrl + e
     killall xinit
 alt + t
     rofi-todo
+# super + w
+#     change-wallpaper.sh

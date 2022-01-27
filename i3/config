@@ -19,12 +19,12 @@ for_window [all] title_window_icon on
 # for_window [class="^.*"] border normal 1
 default_border pixel 2
 # hidhing borders in single screen
-hide_edge_borders smart
+# hide_edge_borders smart
 # gaps outer 5
 gaps inner 10
-smart_gaps on
+# smart_gaps on
 # class                 border  backgr. text    indicator child_border
-client.focused          #0A0405 #211C6D #ffffff #F42E42   #b58900
+client.focused          #0A0405 #211C6D #ffffff #b43200   #b58900
 client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 client.unfocused        #333333 #222222 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
@@ -293,7 +293,7 @@ position top
 font pango:Fira Code Mono 12
 colors{
     background #002b3600
-    #statusline #00000000
+    # statusline #00000000
     #separator  #00000000
     focused_workspace #002b3600 #002b3600 #bd8900
     # only apart when using multiple moniters

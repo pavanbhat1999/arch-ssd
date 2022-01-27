@@ -6,7 +6,8 @@ super + Return
 super + shift + Return
     alacritty
 super + d
-    dmenu_run -nb '#272727' -sf '#1e1e1e' -sb '#A3AD48' -nf '#C5D71D'
+    dmenu_run
+    # dmenu_run -nb '#272727' -sf '#1e1e1e' -sb '#A3AD48' -nf '#C5D71D'
 alt + n
     kitty -e nmtui
 super + shift + b
@@ -17,8 +18,6 @@ super + n
     pcmanfm
 super + shift + n
     sudo pcmanfm
-super + ctrl + n
-    pcmanfm
 super + shift + ctrl + l
     i3lock-fancy
 XF86AudioRaiseVolume
@@ -41,8 +40,6 @@ alt + m
 alt + space
     rofi -show combi
 #-------------------------------------------------------------------------------
-super + ctrl + shift + x
-    code
 super + shift + ctrl + r
     i3-nagbar -t warning -m 'do you want to reboot' -B 'Yes, reboot' reboot
 XF86MonBrightnessUp
@@ -61,10 +58,6 @@ alt + b
     kitty -e nvim /home/root99/.config/bspwm/bspwmrc
 alt + k
     kitty -e nvim /home/root99/.config/sxhkd/sxhkdrc
-#alt + m
-    #kitty -e mpd && kitty -e ncmpcpp
-alt + s
-    tdrop -ma -w -4  -s dropdown alacritty
 alt + x
    polybar-msg cmd toggle
 super + a

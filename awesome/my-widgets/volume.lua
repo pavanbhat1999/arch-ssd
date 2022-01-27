@@ -22,10 +22,10 @@ volume:buttons(gears.table.join(
 		awful.spawn.with_shell("pavucontrol")
 	end),
     awful.button({}, 4, function()
-        awful.spawn.with_shell("bash -c 'pamixer -i 5'")
+        awful.spawn.with_shell("bash -c 'pamixer -i 1'")
     end),
     awful.button({}, 5, function()
-        awful.spawn.with_shell("bash -c 'pamixer -d 5'")
+        awful.spawn.with_shell("bash -c 'pamixer -d 1'")
     end)
 ))
 
