@@ -61,7 +61,7 @@ super + shift + e
 alt + v
     kitty -e nvim /home/root99/.config/nvim/init.lua
 alt + b
-    kitty -e nvim /home/root99/.config/bspwm/bspwmrc
+    kitty -e nvim /home/root99/.config/X11/xinitrc
 alt + k
     kitty -e nvim /home/root99/.config/sxhkd/sxhkdrc_dwm
 alt + m

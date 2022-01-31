@@ -53,7 +53,7 @@ nitrogen --restore &
 sxhkd -c /home/root99/.config/sxhkd/sxhkdrc_dwm &
 greenclip daemon &
 xss-lock --transfer-sleep-lock -- i3lock-fancy -g &
-xautolock -time 30  -locker "systemctl suspend" -detectsleep &
+xautolock -time 10  -locker "systemctl suspend" -detectsleep &
 nm-applet &
 dunst &
 #xfce4-power-manger &
