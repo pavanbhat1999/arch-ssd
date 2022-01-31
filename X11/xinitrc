@@ -52,8 +52,9 @@ nitrogen --restore &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 sxhkd -c /home/root99/.config/sxhkd/sxhkdrc_dwm &
 greenclip daemon &
-xss-lock --transfer-sleep-lock -- i3lock-fancy -g &
-xautolock -time 10  -locker "systemctl suspend" -detectsleep &
+xset s 180 120
+xss-lock --transfer-sleep-lock -- lock-suspend.sh &
+# xautolock -time 10  -locker "systemctl suspend" -detectsleep &
 nm-applet &
 dunst &
 #xfce4-power-manger &
@@ -73,4 +74,5 @@ xsetroot -cursor_name left_ptr &
 # exec  ~/Downloads/i3-4.20_features/build/i3
 # exec i3
 exec awesome
-#exec bspwm
+# exec bspwm
+# exec dbus-launch leftwm

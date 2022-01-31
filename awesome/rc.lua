@@ -172,7 +172,7 @@ local eminent = require("eminent")
 local dashCal = require("my-widgets.calendar")
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
+-- require("awful.hotkeys_popup.keys")
 
 local dashboardBoxshape = function(cr, width, height)
 	gears.shape.rounded_rect(cr, width, height, 10)
@@ -383,6 +383,10 @@ awful.screen.connect_for_each_screen(function(s)
 		s,
 		awful.layout.layouts[1]
 	)
+    awful.tag.add(" ",{
+            s,
+            layout = awful.layout.suit.floating
+        })
 
 	-- Create a promptbox for each screen
 	s.mypromptbox = awful.widget.prompt()
@@ -431,13 +435,18 @@ awful.screen.connect_for_each_screen(function(s)
 		-- border_width = beautiful.border_width,
 	})
 
-	local seperator = wibox.widget.textbox("🔸")
-	local my_net_speed = require("my-widgets.netspeed")
-	local my_temp = require("my-widgets.temp")
-	local my_brightness = require("my-widgets.brightness")
-	local my_volume = require("my-widgets.volume")
-	local my_memory = require("my-widgets.memory")
-	local my_battery = require("my-widgets.battery")
+	-- local seperator = wibox.widget.textbox("🔸")
+	-- local my_net_speed = require("my-widgets.netspeed")
+	-- local my_temp = require("my-widgets.temp")
+	-- local my_brightness = require("my-widgets.brightness")
+	-- local my_volume = require("my-widgets.volume")
+	-- local my_memory = require("my-widgets.memory")
+	-- local my_battery = require("my-widgets.battery")
+    -- local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+    -- local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
+    -- local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+    -- local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
+    -- local fs_widget = require("awesome-wm-widgets.fs-widget.fs-widget")
 	-- local my_clock = require("my-widgets.clock")
 	s.mywibox:setup({
 		layout = wibox.layout.align.horizontal,
@@ -452,51 +461,42 @@ awful.screen.connect_for_each_screen(function(s)
 			layout = wibox.layout.fixed.horizontal,
 			-- mykeyboardlayout,
 			-- TODO: Working On it------------------------------------------------------------------
-			--[[ awful.widget.watch('bash -c "netspeed"', 1),
-			seperator,
-			awful.widget.watch('bash -c "sb-battery"', 15),
-			seperator,
-            wibox.widget.textbox("💡"),
-			awful.widget.watch('bash -c "brightness"', 1),
-			seperator,
-            wibox.widget.textbox("🔊"),
-			awful.widget.watch('bash -c "volume"', 1),
-			seperator, ]]
-			-- another way:-------------------------------------------------------------------------
 			-- NOTE: Someone else widget
-			-- battery_widget(),
-			seperator,
-			my_net_speed,
+			-- seperator,
+			-- my_net_speed,
 			-- net_speed_widget(),
-			seperator,
-			my_temp,
-			seperator,
+			-- seperator,
+			-- my_temp,
+			-- seperator,
 			-- brightness_widget({
 			-- 	type = "icon_and_text",
 			-- 	program = "xbacklight",
 			-- 	step = 5,
 			-- }),
-			my_brightness,
-			seperator,
+			-- my_brightness,
+			-- seperator,
 			-- volume_widget({
 			-- 	widget_type = "text_and_icon",
 			-- 	device = "default",
 			-- }),
-			my_volume,
-			seperator,
-			my_memory,
-			seperator,
+			-- my_volume,
+			-- seperator,
+			-- my_memory,
+            -- fs_widget(), --default
+            -- fs_widget({ mounts = { '/' } }),
+			-- seperator,
 			-- batteryarc_widget({
 			-- 	show_current_level = true,
 			-- 	arc_thickness = 1,
 			-- 	show_notification_mode = "on_click",
 			-- }),
-			my_battery,
-			seperator,
+			-- my_battery,
+			-- battery_widget(),
+			-- seperator,
 			-- my_clock,
-			mytextclock,
+			-- mytextclock,
 			-- s.mylayoutbox,
-			wibox.widget.systray(),
+			-- wibox.widget.systray(),
 		},
 	})
 end)
@@ -521,7 +521,7 @@ local function raise_client()
 	end
 end
 local globalkeys = gears.table.join(
-	awful.key({ modkey }, "s", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
+	awful.key({ modkey }, "F1", hotkeys_popup.show_help, { description = "show help", group = "awesome" }),
 	-- awful.key({ modkey }, "Left", awful.tag.viewprev, { description = "view previous", group = "tag" }),
 	-- awful.key({ modkey }, "Right", awful.tag.viewnext, { description = "view next", group = "tag" }),
 	-- NOTE: Added Own Mappings for moving
@@ -622,7 +622,7 @@ local globalkeys = gears.table.join(
 		if c then
 			c:emit_signal("request::activate", "key.unminimize", { raise = true })
 		end
-	end, { description = "restore minimized", group = "client" }),
+	end, { description = "restore minimized", group = "client" })
 
 	-- Prompt
 	-- awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
@@ -639,9 +639,9 @@ local globalkeys = gears.table.join(
 	--           end,
 	--           {description = "lua execute prompt", group = "awesome"}),
 	-- Menubar TODO: not yet used
-	awful.key({ modkey }, "-", function()
-		menubar.show()
-	end, { description = "show the menubar", group = "launcher" })
+	-- awful.key({ modkey }, "-", function()
+	-- 	menubar.show()
+	-- end, { description = "show the menubar", group = "launcher" })
 )
 
 local clientkeys = gears.table.join(
@@ -669,11 +669,11 @@ local clientkeys = gears.table.join(
 	awful.key({ modkey }, "t", function(c)
 		c.ontop = not c.ontop
 	end, { description = "toggle keep on top", group = "client" }),
-	-- awful.key({ modkey }, "n", function(c)
-	-- 	-- The client currently has the input focus, so it cannot be
-	-- 	-- minimized, since minimized clients can't have the focus.
-	-- 	c.minimized = true
-	-- end, { description = "minimize", group = "client" }), TODO:
+	awful.key({ modkey ,"Mod1"}, "n", function(c)
+		-- The client currently has the input focus, so it cannot be
+		-- minimized, since minimized clients can't have the focus.
+		c.minimized = true
+	end, { description = "minimize", group = "client" }),
 	awful.key({ modkey }, "m", function(c)
 		c.maximized = not c.maximized
 		c:raise()
@@ -685,7 +685,39 @@ local clientkeys = gears.table.join(
 	awful.key({ modkey, "Shift" }, "m", function(c)
 		c.maximized_horizontal = not c.maximized_horizontal
 		c:raise()
-	end, { description = "(un)maximize horizontally", group = "client" })
+	end, { description = "(un)maximize horizontally", group = "client" }),
+    -- add shortcut to make current node sticky
+    awful.key({modkey},"s" , function(c)
+	c.sticky = not c.sticky
+	c.ontop = true
+	c:raise()
+    end,{description = "Make window sticky",group = "client"}),
+    awful.key({modkey},"-" , function(c)
+        -- create a new tag and move the client to it
+        c.floating = true
+			if client.focus then
+				local tag = client.focus.screen.tags[9]
+				if tag then
+					client.focus:move_to_tag(tag)
+				end
+			end
+    end,{description = "Move it to hidden tag",group = "client"}),
+
+    awful.key({modkey , "Shift"},"-" , function(c)
+			local screen = awful.screen.focused()
+			local tag = screen.tags[9]
+			if tag then
+				awful.tag.viewtoggle(tag)
+			end
+    end,{description = "Move back hidden tag",group = "client"}),
+    awful.key({ modkey },"x" , function()
+        -- toggle polybar
+        awful.spawn.with_shell("sh $HOME/.config/polybar.old/launch_awesome.sh")
+    end,{description = "Move back hidden tag",group = "client"}),
+    awful.key({ modkey , "Shift"},"x" , function()
+        -- toggle polybar
+        awful.spawn.with_shell("killall -q polybar")
+    end,{description = "Move back hidden tag",group = "client"})
 )
 
 -- Bind all key numbers to tags.
@@ -804,7 +836,7 @@ awful.rules.rules = {
 
 	-- Add titlebars to normal clients and dialogs
 	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = false } },
-
+    { rule = { class = "Polybar" }, properties = { screen = 1 , height = 30 , tag = " "} },
 	-- Set Brave to always map on the tag named "2" on screen 1.
 	{ rule = { class = "Brave-browser" }, properties = { screen = 1, tag = "2.뮻 " } }, -- space sensitive 😅
 	{ rule = { class = "Pcmanfm" }, properties = { screen = 1, tag = "3. ", tiling = true } },
@@ -812,8 +844,7 @@ awful.rules.rules = {
 		rule = { name = "ranger" },
 		properties = { titlebars_enabled = false, floating = true, width = 1080, height = 720, x = 500, y = 200 },
 	},
-	-- make mpv sticky
-	{ rule = { class = "mpv" }, properties = { fullscreen = true, screen = 1, tag = "5. " } },
+	{ rule = { class = "mpv" }, properties = { fullscreen = true,floating = true, switchtotag=true, screen = 1, tag = "6. " } },
 	-- { rule = { class = "mpv" }, properties = { sticky = true } },
 }
 -- }}}
@@ -882,22 +913,22 @@ end)
 client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
--- HACK: show mpv-----------------------------------------------------------------------------------
+-- HACK: show mpv and sticky-----------------------------------------------------------------------------------
+-- client.connect_signal("property::floating", function(c)
+-- 	if c.floating then
+-- 		if c.class == "mpv" or c.class == "Brave-browser" then
+-- 			awful.titlebar.show(c)
+--             -- keep this always on top
+-- 			c.ontop = true
+-- 		else
+-- 			awful.titlebar.hide(c)
+-- 		end
+-- 	else
+-- 		awful.titlebar.hide(c)
+-- 	end
+-- end)
 client.connect_signal("property::floating", function(c)
-	if c.floating then
-		if c.class == "mpv" or c.class == "Brave-browser" then
-			awful.titlebar.show(c)
-            -- keep this always on top
-			c.ontop = true
-		else
-			awful.titlebar.hide(c)
-		end
-	else
-		awful.titlebar.hide(c)
-	end
-end)
-client.connect_signal("property::floating", function(c)
-	if c.floating then
+	if c.floating and not c.maximized and not c.fullscreen then
 		c.border_width = 1
 		c:geometry({
 			width = 1080,

@@ -46,14 +46,14 @@ XF86MonBrightnessUp
     xbacklight -inc 5
 XF86MonBrightnessDown
     xbacklight -dec 5
-super+y
-    import -window root ~/Pictures/screenshot-`/bin/date +%Y%m%d-%H:%M:%S`.png
-super+x
-    import ~/Pictures/screenshot-`/bin/date +%Y%m%d-%H:%M:%S`.png
+# super+y
+#     import -window root ~/Pictures/screenshot-`/bin/date +%Y%m%d-%H:%M:%S`.png
+# super+x
+#     import ~/Pictures/screenshot-`/bin/date +%Y%m%d-%H:%M:%S`.png
 super + alt + space
     kitty -e ranger
 alt + v
-    kitty -e nvim /home/root99/.config/nvim/init.vim
+    kitty -e nvim /home/root99/.config/nvim/init.lua
 alt + b
     kitty -e nvim /home/root99/.config/bspwm/bspwmrc
 alt + k
@@ -62,8 +62,8 @@ alt + x
    polybar-msg cmd toggle
 super + a
     kitty -e w2anime
-super + w
-    change-wallpaper.sh
+# super + w
+#     change-wallpaper.sh
 #-------------------------------------------------------------------------------
 # bspwm hotkeys
 #-------------------------------------------------------------------------------

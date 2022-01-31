@@ -78,7 +78,7 @@ width = 50%
 height = 30
 offset-x = 50%
 offset-y = 0.5%
-modules-right =network xbacklight pulseaudio filesystem battery temperature date
+modules-right =network xbacklight pulseaudio filesystem battery cpu memory temperature date
 
 tray-position = right
 tray-padding = 1
@@ -350,7 +350,7 @@ interval = 2
 format-prefix = "🧠 "
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #4bffdc
-label = %percentage_used%%
+label = %mb_used%
 
 [module/wlan]
 type = internal/network

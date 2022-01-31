@@ -29,7 +29,7 @@ super + n
 super + shift + n
     sudo pcmanfm
 super + shift + ctrl + l
-    i3lock-fancy
+    lock-suspend.sh
 XF86AudioRaiseVolume
     pactl set-sink-volume @DEFAULT_SINK@ +5%
 XF86AudioLowerVolume
