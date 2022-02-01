@@ -3,5 +3,7 @@
 configuration {
   show-icons:         true;
   icon-theme:         "solarized";
+  matching: "fuzzy";
+  sort-method: "fuzzy";
 }
 @import "/usr/share/rofi/themes/solarized.rasi"
