@@ -17,52 +17,50 @@
 ;==========================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-background = #000000,
-;background = #00000000
+; background = #002B36
+background     = #00000000
 background-alt = #141313
-;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-foreground-alt = #555
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+foreground-alt = #dfdfdf
+foreground     = #b58900
+primary        = #ffb52a
+secondary      = #e60053
+alert          = #bd2c40
 
 [bar/bottom]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 50%
 height = 30
 ;offset-x = 1%
-;offset-y = 1%
-radius = 6.0
+offset-y = 0.5%
+; radius = 6.0
 fixed-center = false
 bottom = false
-;background = ${colors.background}
-background = #000000
+background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 3
-line-color = #f00
+; line-size = 3
+; line-color = #f00
+;
+; border-size = 0
+; border-color = #00000000
+;
+; padding-left = 2
+; padding-right = 2
+;
+; module-margin-left = 1
+; module-margin-right = 2
 
-border-size = 0
-border-color = #00000000
-
-padding-left = 2
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = JetBrainsMonoMedium:pixelsize=10;
+font-0 = FiraCodeMonoRegular:pixelsize=12;
 font-1 = HackNerdFont:pixelsize=12;
 font-2 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
-font-3 = IPAGothic:fontformat=truetype:pixelsize=10:antialias=false;
-font-4 = siji:pixelsize=10;
-;modules-left = apple bspwm 
-modules-left = i3
+font-3 = brave:style=Regular:pixelsize=16;
+; font-3 = IPAGothic:fontformat=truetype:pixelsize=10:antialias=false;
+; font-4 = siji:pixelsize=10;
+;modules-left = apple bspwm
+modules-left = i3 xwindow
 
-;wm-restack = bspwm
-wm-restack = i3
+; wm-restack = bspwm
+;wm-restack = i3
 
 ;override-redirect = true
 
@@ -79,11 +77,12 @@ enable-ipc = true
 width = 50%
 height = 30
 offset-x = 50%
-modules-right =network xbacklight pulseaudio filesystem battery temperature date 
+offset-y = 0.5%
+modules-right =network xbacklight pulseaudio filesystem battery cpu memory temperature date
 
 tray-position = right
 tray-padding = 1
-tray-background = ${colors.background-alt}
+tray-background = ${colors.background}
 tray-offset-x = 0
 tray-offset-y = 0
 tray-scale = 1.0
@@ -91,12 +90,11 @@ tray-scale = 1.0
 radius = 6.0
 fixed-center = false
 bottom = false
-;background = ${colors.background}
-background = #000000
-foreground = ${colors.foreground}
+background = ${colors.background}
+foreground = ${colors.foreground-alt}
 
-line-size = 3
-line-color = #f00
+; line-size = 3
+; line-color = #f00
 
 border-size = 0
 border-color = #00000000
@@ -107,14 +105,15 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = JetBrainsMonoMedium:pixelsize=8;
+font-0 = FiraCodeMonoRegular:pixelsize=12;
 font-1 = HackNerdFont:pixelsize=12;
 font-2 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false;
-font-3 = IPAGothic:fontformat=truetype:pixelsize=10:antialias=false;
-font-4 = siji:pixelsize=8;
-;modules-left = apple bspwm 
+font-3 = brave:style=Regular:pixelsize=16;
+; font-3 = IPAGothic:fontformat=truetype:pixelsize=10:antialias=false;
+; font-4 = siji:pixelsize=8;
+;modules-left = apple bspwm
 
-;wm-restack = bspwm
+; wm-restack = bspwm
 wm-restack = i3
 
 override-redirect = true
@@ -122,11 +121,8 @@ override-redirect = true
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
 
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
-cursor-click = pointer
-cursor-scroll = ns-resize
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 [module/apps]
 type          = custom/menu
 label-open    = Deatails
@@ -147,7 +143,7 @@ menu-2-1 = Scrot
 menu-2-1-exec = scrot &
 [module/apple]
 type = custom/script
-exec = echo " " " " 
+exec = echo " " " "
 interval = 0
 click-left = notify-send "Got you________________________________________________________You have been fooled_____________________________It is not a Mac"
 [module/crypto]
@@ -161,7 +157,7 @@ type = internal/xwindow
 format = <label>
 format-padding = 4
 label = %title%
-label-maxlen = 25
+label-maxlen = 50
 
 ; Used instead of label when there is no window title
 ; Available tokens:
@@ -230,7 +226,7 @@ format-unmounted = <label-unmounted>
 ;   %used%
 ; Default: %mountpoint% %percentage_free%%
 label-mounted-prefix = "U+1F4C0"
-label-mounted = 📀: %free% 
+label-mounted = 📀: %free%
 ;label-mounted-underline =${colors.primary}
 label-mounted-padding = 2
 label-mounted-margin = 1
@@ -285,20 +281,21 @@ wrapping-scroll = false
 
 label-mode-padding = 2
 label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+label-mode-background = ${colors.foreground-alt}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
-label-focused-background = ${colors.background-alt}
+label-focused = %name%
+label-focused-background = ${colors.background}
 ;label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %name%
 label-unfocused-padding = 2
+label-unfocused-foreground = ${colors.foreground-alt}
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %name%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
@@ -348,7 +345,7 @@ interval = 2
 format-prefix = "🧠 "
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-underline = #4bffdc
-label = %percentage_used%%
+label = %mb_used%
 
 [module/wlan]
 type = internal/network
@@ -367,7 +364,7 @@ format-disconnected =
 
 ramp-signal-0 = 
 ramp-signal-1 = 
-ramp-signal-2 = 📡  
+ramp-signal-2 = 📡
 ramp-signal-3 = 📡
 ramp-signal-4 = 📡
 ramp-signal-foreground = ${colors.foreground-alt}

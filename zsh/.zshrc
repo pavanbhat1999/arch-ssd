@@ -6,8 +6,8 @@
 autoload -U colors && colors
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.config/.histfile
-HISTSIZE=5000
-SAVEHIST=5000
+HISTSIZE=10000
+SAVEHIST=10000
 bindkey -e
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall

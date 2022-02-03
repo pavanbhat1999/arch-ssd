@@ -31,27 +31,27 @@ command = "SoftReload"
 modifier = ["modkey", "Shift"]
 key = "r"
 
-[[keybind]]
-command = "Execute"
-value = "loginctl kill-session $XDG_SESSION_ID"
-modifier = ["modkey", "Shift"]
-key = "x"
+# [[keybind]]
+# command = "Execute"
+# value = "loginctl kill-session $XDG_SESSION_ID"
+# modifier = ["modkey", "Shift"]
+# key = "x"
 
-[[keybind]]
-command = "Execute"
-value = "slock"
-modifier = ["modkey", "Control"]
-key = "l"
+# [[keybind]]
+# command = "Execute"
+# value = "slock"
+# modifier = ["modkey", "Control"]
+# key = "l"
 
 [[keybind]]
 command = "MoveToLastWorkspace"
-modifier = ["modkey", "Shift"]
-key = "w"
-
-[[keybind]]
-command = "SwapTags"
 modifier = ["modkey"]
-key = "w"
+key = "Tab"
+
+# [[keybind]]
+# command = "SwapTags"
+# modifier = ["modkey"]
+# key = "w"
 
 [[keybind]]
 command = "MoveWindowUp"
@@ -63,10 +63,10 @@ command = "MoveWindowDown"
 modifier = ["modkey", "Shift"]
 key = "j"
 
-[[keybind]]
-command = "MoveWindowTop"
-modifier = ["modkey"]
-key = "Return"
+# [[keybind]]
+# command = "MoveWindowTop"
+# modifier = ["modkey"]
+# key = "Return"
 
 [[keybind]]
 command = "FocusWindowUp"

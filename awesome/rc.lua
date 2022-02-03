@@ -431,6 +431,7 @@ awful.screen.connect_for_each_screen(function(s)
 		height = 30,
 		bg = beautiful.bg_normal,
 		position = "top",
+        border_width = 5,
 		-- border_color = beautiful.border_focus,
 		-- border_width = beautiful.border_width,
 	})

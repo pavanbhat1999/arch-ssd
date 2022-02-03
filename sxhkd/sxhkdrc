@@ -184,10 +184,11 @@ super + w
 	if [ -n "$id" ];then \
 		xprop -id $id -f _SCRATCH 32ii -set _SCRATCH $(date +%s,%N);\
 		bspc node -t "floating";\
+        bspc node -z right -50 50 top -50 50;\
 		xdotool windowunmap $id;\
 	fi
 
-super + shift + w
+super +  shift + w
 	i=$(bspc query -N -n "focused.floating");\
 	if [ -n "$i" ];then \
 		xprop -id $i -f _SCRATCH 32ii -set _SCRATCH $(date +%s,%N);\

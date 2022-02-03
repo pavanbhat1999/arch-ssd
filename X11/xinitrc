@@ -52,9 +52,9 @@ nitrogen --restore &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 sxhkd -c /home/root99/.config/sxhkd/sxhkdrc_dwm &
 greenclip daemon &
-xset s 180 120
+# xset s 180 120
 xss-lock --transfer-sleep-lock -- lock-suspend.sh &
-# xautolock -time 10  -locker "systemctl suspend" -detectsleep &
+xautolock -time 15 -locker "systemctl suspend" -detectsleep &
 nm-applet &
 dunst &
 #xfce4-power-manger &
