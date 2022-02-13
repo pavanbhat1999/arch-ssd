@@ -11,12 +11,12 @@ local wibox = require("wibox")
 -- Theme handling library
 local beautiful = require("beautiful")
 -- Notification library
-local naughty = require("naughty")
+-- local naughty = require("naughty")
 -- add sound for notification
-function naughty.config.notify_callback(args)
-        awful.spawn.easy_async_with_shell("noti", function() end)
-    return args
-end
+-- function naughty.config.notify_callback(args)
+-- 	awful.spawn.easy_async_with_shell("noti", function() end)
+-- 	return args
+-- end
 -- local some_widget =
 -- {
 --     {
@@ -204,11 +204,13 @@ dsbdCalendar.widget = dashCal
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
-	naughty.notify({
-		preset = naughty.config.presets.critical,
-		title = "Oops, there were errors during startup!",
-		text = awesome.startup_errors,
-	})
+	-- naughty.notify({
+	-- 	preset = naughty.config.presets.critical,
+	-- 	title = "Oops, there were errors during startup!",
+	-- 	text = awesome.startup_errors,
+	-- })
+    -- exec dunt
+    awful.spawn("notify-send 'error in config'")
 end
 
 -- Handle runtime errors after startup
@@ -221,11 +223,12 @@ do
 		end
 		in_error = true
 
-		naughty.notify({
-			preset = naughty.config.presets.critical,
-			title = "Oops, an error happened!",
-			text = tostring(err),
-		})
+		-- naughty.notify({
+		-- 	preset = naughty.config.presets.critical,
+		-- 	title = "Oops, an error happened!",
+		-- 	text = tostring(err),
+		-- })
+        awful.spawn("notify-send 'error in config'")
 		in_error = false
 	end)
 end
@@ -258,8 +261,8 @@ awful.layout.layouts = {
 	-- awful.layout.suit.fair.horizontal,
 	-- awful.layout.suit.spiral,
 	-- awful.layout.suit.spiral.dwindle,
-	-- awful.layout.suit.max,
-	awful.layout.suit.max.fullscreen,
+	awful.layout.suit.max,
+	-- awful.layout.suit.max.fullscreen,
 	-- awful.layout.suit.magnifier,
 	-- awful.layout.suit.corner.nw,
 	-- awful.layout.suit.corner.ne,
@@ -372,21 +375,21 @@ end
 
 awful.screen.connect_for_each_screen(function(s)
 	-- Wallpaper
-	set_wallpaper()
-    -- gears.wallpaper.set("#002b31")
+	-- set_wallpaper()
+	gears.wallpaper.set("#1a1b26")
 
 	-- Each screen has its own tag table.
 	-- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
 	awful.tag(
-		{ "1. ", "2.뮻 ", "3. ", "4.뮪 ", "5. ", "6. ", "7.못 ", "8. " },
+		{ "1. ", "2.뮻 ", "3. ", "4.뮪 ", "5. ", "6. ", "7. ", "8. " },
 		s,
 		awful.layout.layouts[1]
 	)
-    awful.tag.add(" ",{
-            s,
-            layout = awful.layout.suit.floating
-        })
+	awful.tag.add(" ", {
+		s,
+		layout = awful.layout.suit.floating,
+	})
 
 	-- Create a promptbox for each screen
 	s.mypromptbox = awful.widget.prompt()
@@ -432,7 +435,7 @@ awful.screen.connect_for_each_screen(function(s)
 		bg = beautiful.bg_normal,
 		position = "top",
         border_width = 5,
-		-- border_color = beautiful.border_focus,
+		border_color = beautiful.wibar_border,
 		-- border_width = beautiful.border_width,
 	})
 
@@ -443,11 +446,11 @@ awful.screen.connect_for_each_screen(function(s)
 	-- local my_volume = require("my-widgets.volume")
 	-- local my_memory = require("my-widgets.memory")
 	-- local my_battery = require("my-widgets.battery")
-    -- local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
-    -- local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
-    -- local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
-    -- local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
-    -- local fs_widget = require("awesome-wm-widgets.fs-widget.fs-widget")
+	-- local battery_widget = require("awesome-wm-widgets.battery-widget.battery")
+	-- local net_speed_widget = require("awesome-wm-widgets.net-speed-widget.net-speed")
+	-- local brightness_widget = require("awesome-wm-widgets.brightness-widget.brightness")
+	-- local volume_widget = require('awesome-wm-widgets.volume-widget.volume')
+	-- local fs_widget = require("awesome-wm-widgets.fs-widget.fs-widget")
 	-- local my_clock = require("my-widgets.clock")
 	s.mywibox:setup({
 		layout = wibox.layout.align.horizontal,
@@ -460,6 +463,7 @@ awful.screen.connect_for_each_screen(function(s)
 		s.mytasklist, -- Middle widget
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
+            -- HACK: For polybar to work properly
 			-- mykeyboardlayout,
 			-- TODO: Working On it------------------------------------------------------------------
 			-- NOTE: Someone else widget
@@ -483,8 +487,8 @@ awful.screen.connect_for_each_screen(function(s)
 			-- my_volume,
 			-- seperator,
 			-- my_memory,
-            -- fs_widget(), --default
-            -- fs_widget({ mounts = { '/' } }),
+			-- fs_widget(), --default
+			-- fs_widget({ mounts = { '/' } }),
 			-- seperator,
 			-- batteryarc_widget({
 			-- 	show_current_level = true,
@@ -586,9 +590,9 @@ local globalkeys = gears.table.join(
 	-- end, { description = "go back", group = "client" }),
 
 	-- Standard program
-	awful.key({ modkey }, "Return", function()
-		awful.spawn(terminal)
-	end, { description = "open a terminal", group = "launcher" }),
+	-- awful.key({ modkey }, "Return", function()
+	-- 	awful.spawn(terminal)
+	-- end, { description = "open a terminal", group = "launcher" }),
 	awful.key({ modkey, "Shift" }, "r", awesome.restart, { description = "reload awesome", group = "awesome" }),
 	awful.key({ modkey, "Control", "Shift" }, "e", awesome.quit, { description = "quit awesome", group = "awesome" }),
 
@@ -658,7 +662,6 @@ local clientkeys = gears.table.join(
 		{ modkey, "Shift" },
 		"space",
 		awful.client.floating.toggle,
-        -- if floating is enabled, the client will be floating in middle of the screen with half of the width and height
 		{ description = "toggle floating", group = "client" }
 	),
 	awful.key({ modkey, "Control" }, "Return", function(c)
@@ -670,7 +673,8 @@ local clientkeys = gears.table.join(
 	awful.key({ modkey }, "t", function(c)
 		c.ontop = not c.ontop
 	end, { description = "toggle keep on top", group = "client" }),
-	awful.key({ modkey ,"Mod1"}, "n", function(c)
+	-- HACK: minimize a window
+	awful.key({ modkey, "Mod1" }, "n", function(c)
 		-- The client currently has the input focus, so it cannot be
 		-- minimized, since minimized clients can't have the focus.
 		c.minimized = true
@@ -687,38 +691,37 @@ local clientkeys = gears.table.join(
 		c.maximized_horizontal = not c.maximized_horizontal
 		c:raise()
 	end, { description = "(un)maximize horizontally", group = "client" }),
-    -- add shortcut to make current node sticky
-    awful.key({modkey},"s" , function(c)
-	c.sticky = not c.sticky
-	c.ontop = true
-	c:raise()
-    end,{description = "Make window sticky",group = "client"}),
-    awful.key({modkey},"-" , function(c)
-        -- create a new tag and move the client to it
-        c.floating = true
-			if client.focus then
-				local tag = client.focus.screen.tags[9]
-				if tag then
-					client.focus:move_to_tag(tag)
-				end
-			end
-    end,{description = "Move it to hidden tag",group = "client"}),
-
-    awful.key({modkey , "Shift"},"-" , function(c)
-			local screen = awful.screen.focused()
-			local tag = screen.tags[9]
+	-- add shortcut to make current node sticky
+	awful.key({ modkey }, "s", function(c)
+		c.sticky = not c.sticky
+		c.ontop = not c.ontop
+		c:raise()
+	end, { description = "Make window sticky", group = "client" }),
+    -- for scratch pad implementation
+	awful.key({ modkey }, "-", function(c)
+		-- c.floating = true
+		if client.focus then
+			local tag = client.focus.screen.tags[9]
 			if tag then
-				awful.tag.viewtoggle(tag)
+				client.focus:move_to_tag(tag)
 			end
-    end,{description = "Move back hidden tag",group = "client"}),
-    awful.key({ modkey },"x" , function()
-        -- toggle polybar
-        awful.spawn.with_shell("sh $HOME/.config/polybar.old/launch_awesome.sh")
-    end,{description = "Move back hidden tag",group = "client"}),
-    awful.key({ modkey , "Shift"},"x" , function()
-        -- toggle polybar
-        awful.spawn.with_shell("killall -q polybar")
-    end,{description = "Move back hidden tag",group = "client"})
+		end
+	end, { description = "Move it to hidden tag", group = "client" }),
+
+	awful.key({ modkey, "Shift" }, "-", function(c)
+		local screen = awful.screen.focused()
+		local tag = screen.tags[9]
+		if tag then
+			awful.tag.viewtoggle(tag)
+		end
+	end, { description = "Move back hidden tag", group = "client" }),
+	awful.key({ modkey }, "x", function()
+		-- toggle polybar
+		awful.spawn.with_shell("sh $HOME/.config/polybar.old/launch_awesome.sh")
+	end, { description = "Move back hidden tag", group = "client" }),
+	awful.key({ modkey, "Shift" }, "x", function()
+		awful.spawn.with_shell("killall -q polybar")
+	end, { description = "Move back hidden tag", group = "client" })
 )
 
 -- Bind all key numbers to tags.
@@ -837,15 +840,18 @@ awful.rules.rules = {
 
 	-- Add titlebars to normal clients and dialogs
 	{ rule_any = { type = { "normal", "dialog" } }, properties = { titlebars_enabled = false } },
-    { rule = { class = "Polybar" }, properties = { screen = 1 , height = 30 , tag = " "} },
+	{ rule = { class = "Polybar" }, properties = { screen = 1, height = 30, tag = " " } },
 	-- Set Brave to always map on the tag named "2" on screen 1.
-	{ rule = { class = "Brave-browser" }, properties = { screen = 1, tag = "2.뮻 " } }, -- space sensitive 😅
+	{ rule = { class = "Brave-browser" }, properties = { screen = 1, tag = "2.뮻 " , switchtotag = true } }, -- space sensitive 😅
+	{ rule = { class = "firefox" }, properties = { screen = 1, tag = "7. ", switchtotag = true } },
 	{ rule = { class = "Pcmanfm" }, properties = { screen = 1, tag = "3. ", tiling = true } },
 	{
 		rule = { name = "ranger" },
 		properties = { titlebars_enabled = false, floating = true, width = 1080, height = 720, x = 500, y = 200 },
 	},
-	{ rule = { class = "mpv" }, properties = { fullscreen = true,floating = true, switchtotag=true, screen = 1, tag = "6. " } },
+	{ rule = { class = "mpv" }, properties = { floating = true, switchtotag = true, screen = 1, tag = "6. " } },
+	{ rule = { class = "code" }, properties = { switchtotag = true, screen = 1, tag = "4.뮪 " } },
+	{ rule = { class = "Polybar" }, properties = {border_color = beautiful.polybar_border } },
 	-- { rule = { class = "mpv" }, properties = { sticky = true } },
 }
 -- }}}
@@ -914,20 +920,6 @@ end)
 client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
--- HACK: show mpv and sticky-----------------------------------------------------------------------------------
--- client.connect_signal("property::floating", function(c)
--- 	if c.floating then
--- 		if c.class == "mpv" or c.class == "Brave-browser" then
--- 			awful.titlebar.show(c)
---             -- keep this always on top
--- 			c.ontop = true
--- 		else
--- 			awful.titlebar.hide(c)
--- 		end
--- 	else
--- 		awful.titlebar.hide(c)
--- 	end
--- end)
 client.connect_signal("property::floating", function(c)
 	if c.floating and not c.maximized and not c.fullscreen then
 		c.border_width = 1
@@ -942,6 +934,12 @@ client.connect_signal("property::floating", function(c)
 		c.border_width = beautiful.border_width
 	end
 end)
+-- For Rounded borders on every client
+-- client.connect_signal("manage", function (c)
+--     c.shape = function(cr,w,h)
+--         gears.shape.rounded_rect(cr,w,h,15)
+--     end
+-- end)
 -- Gaps
 beautiful.useless_gap = 5
 beautiful.gap_single_client = false

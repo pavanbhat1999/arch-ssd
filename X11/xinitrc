@@ -46,7 +46,7 @@ export SSH_AUTH_SOCK
     #bspwm ) exec bspwm;;
 #esac
 #exec /usr/bin/dbus-launch &
-picom &
+picom --experimental-backends --blur-method dual_kawase --backend glx &
 nitrogen --restore &
 # dwmblocks &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &

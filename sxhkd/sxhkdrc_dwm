@@ -4,8 +4,8 @@
 # make sxhkd reload its configuration files:
 
 # terminal emulator
-#super + Return
-    #kitty
+super + Return
+    kitty
 #secondary terminal
 super + shift + Return
     alacritty
@@ -22,8 +22,8 @@ alt + n
     kitty -e nmtui
 super + shift + b
     brave
-# super + shift + f
-#     firefox
+super + shift + f
+    firefox
 super + n
     pcmanfm
 super + shift + n

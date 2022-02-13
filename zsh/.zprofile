@@ -20,5 +20,6 @@ export XINITRC=$XDG_CONFIG_HOME/X11/xinitrc
 export XAUTHORITY=$XDG_CONFIG_HOME/Xauthority # this will break some dm
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
 export GRADLE_USER_HOME="$XDG_DATA_HOME"/gradle
+export CHROME_EXECUTABLE="/usr/bin/brave"
 #export QT_QPA_PLATFORMTHEME=qt5ct
 #export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/.vim/vimrc" | source $MYVIMRC'

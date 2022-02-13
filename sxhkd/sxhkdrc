@@ -184,7 +184,6 @@ super + w
 	if [ -n "$id" ];then \
 		xprop -id $id -f _SCRATCH 32ii -set _SCRATCH $(date +%s,%N);\
 		bspc node -t "floating";\
-        bspc node -z right -50 50 top -50 50;\
 		xdotool windowunmap $id;\
 	fi
 
@@ -202,7 +201,7 @@ super +  shift + w
 		done|sort -n|head -n1|cut -d" " -f 5);\
 		if [ -n "$i" ];then \
 			xprop -id $i -remove _SCRATCH;\
-			bspc rule -a \* state=floating center=on --one-shot;\
+			bspc rule -a \* state=floating center=on --one-shot rectangle=800x500+00+00;\
 			xdotool windowmap $i;\
 			bspc node -f $i;\
 		fi;\

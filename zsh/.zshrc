@@ -39,8 +39,8 @@ zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:*' check-for-changes true
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 #>>>>Aliesas
-#alias ls="colorls"
-alias ls="ls --color=auto"
+alias ls="exa --icons"
+# alias ls="ls --color=auto"
 alias gs="git status"
 alias gp="git push"
 alias gc="git commit"
@@ -55,10 +55,11 @@ alias tls='trash-list'
 alias ggg='cd $HOME/Downloads/prbhat07'
 alias dot='cd $HOME/.config/'
 alias b='cd $HOME/bin'
-#export JAVA_HOME='/usr/lib/jvm/java-8-openjdk/jre'
-#export JAVA_HOME='/usr/lib/jvm/java-11-openjdk'
-#export PATH=$JAVA_HOME/bin:$PATH
-#export PATH=$HOME/.config/rofi/bin:$PATH
+alias tries='cd $HOME/Downloads/prbhat07/tries/'
+export JAVA_HOME='/usr/lib/jvm/java-8-openjdk/jre'
+export JAVA_HOME='/usr/lib/jvm/java-11-openjdk'
+export PATH=$JAVA_HOME/bin:$PATH
+# export PATH=$HOME/.config/rofi/bin:$PATH
 # bindkey -v
 #if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -le 4 ]; then
   #exec startx
