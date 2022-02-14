@@ -464,6 +464,7 @@ awful.screen.connect_for_each_screen(function(s)
 		{ -- Right widgets
 			layout = wibox.layout.fixed.horizontal,
             -- HACK: For polybar to work properly
+            wibox.widget.textbox("                                                                                                                                                                            ")
 			-- mykeyboardlayout,
 			-- TODO: Working On it------------------------------------------------------------------
 			-- NOTE: Someone else widget
