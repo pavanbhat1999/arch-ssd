@@ -1,6 +1,10 @@
 .Xmodmap
 .dwm.log
 firefox/
+btop/btop.log
+discord/
+mpv/watch_later/
+tool_state
 bashtop/
 zsh/powerlevel10k/
 volumeicon/
