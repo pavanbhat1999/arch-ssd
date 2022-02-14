@@ -943,7 +943,7 @@ end)
 -- end)
 -- Gaps
 beautiful.useless_gap = 5
-beautiful.gap_single_client = false
+beautiful.gap_single_client = true
 --Auto Start
 -- awful.spawn(terminal .. "-e nitrogen --restore")
 -- Make a wallpaper slideshow

@@ -31,7 +31,7 @@ theme.polybar_border = "#00000000"
 theme.bg_systray     = "#1a1b26"
 theme.fg_focus       = "#7aa2f7"
 theme.border_focus   = "#7aa2f7"
-theme.border_normal  = "#1a1b26"
+theme.border_normal  = "#050505"
 --
 theme.bg_urgent     = "#BC1717"
 theme.bg_minimize   = "#444444"
@@ -41,7 +41,7 @@ theme.fg_urgent     = "#ffffff"
 theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap   = dpi(0)
-theme.border_width  = dpi(1)
+theme.border_width  = dpi(2)
 theme.border_marked = "#91231c"
 
 -- There are other variable sets
