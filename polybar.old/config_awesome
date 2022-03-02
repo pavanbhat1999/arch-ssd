@@ -82,7 +82,7 @@ modules-right =network xbacklight pulseaudio filesystem battery cpu memory tempe
 
 tray-position = right
 tray-padding = 1
-tray-background = ${colors.background}
+tray-background = #1a1b26
 tray-offset-x = 0
 tray-offset-y = 0
 tray-scale = 1.0
@@ -116,7 +116,7 @@ font-3 = brave:style=Regular:pixelsize=16;
 ; wm-restack = bspwm
 ;wm-restack = i3
 
-;override-redirect = true
+override-redirect = true
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev

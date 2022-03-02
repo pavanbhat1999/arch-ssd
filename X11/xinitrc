@@ -47,12 +47,12 @@ export SSH_AUTH_SOCK
 #esac
 #exec /usr/bin/dbus-launch &
 picom --experimental-backends --blur-method dual_kawase --backend glx &
-nitrogen --restore &
+# nitrogen --restore &
 # dwmblocks &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 sxhkd -c /home/root99/.config/sxhkd/sxhkdrc_dwm &
 greenclip daemon &
-# xset s 180 120
+xset s 180 120
 xss-lock --transfer-sleep-lock -- lock-suspend.sh &
 xautolock -time 15 -locker "systemctl suspend" -detectsleep &
 nm-applet &

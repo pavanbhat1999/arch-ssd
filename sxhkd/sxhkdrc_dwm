@@ -59,7 +59,7 @@ super + alt + space
 super + shift + e
 	pkill -USR1 -x sxhkd
 alt + v
-    kitty -e nvim /home/root99/.config/nvim/init.lua
+    cd /home/root99/.config/nvim/ && kitty -e nvim init.lua
 alt + b
     kitty -e nvim /home/root99/.config/X11/xinitrc
 alt + k

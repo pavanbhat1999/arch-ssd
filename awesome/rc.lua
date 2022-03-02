@@ -367,7 +367,8 @@ local tasklist_buttons = gears.table.join(
 -- 	end
 -- end
 local function set_wallpaper()
-	awful.spawn.with_shell("nitrogen --restore")
+	-- awful.spawn.with_shell("nitrogen --restore")
+    awful.spawn.with_shell("feh --randomize --bg-fill /home/root99/Downloads/tmpWall/")
 end
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
@@ -375,14 +376,14 @@ end
 
 awful.screen.connect_for_each_screen(function(s)
 	-- Wallpaper
-	-- set_wallpaper()
-	gears.wallpaper.set("#1a1b26")
+	set_wallpaper()
+	-- gears.wallpaper.set("#1a1b26")
 
 	-- Each screen has its own tag table.
 	-- awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
 
 	awful.tag(
-		{ "1. ", "2.뮻 ", "3. ", "4.뮪 ", "5. ", "6. ", "7. ", "8. " },
+		{ "1. ", "2.뮻 ", "3. ", "4.뮪 ", "5. ", "6. ", "7. ", "8. " },
 		s,
 		awful.layout.layouts[1]
 	)
@@ -845,14 +846,15 @@ awful.rules.rules = {
 	-- Set Brave to always map on the tag named "2" on screen 1.
 	{ rule = { class = "Brave-browser" }, properties = { screen = 1, tag = "2.뮻 " , switchtotag = true } }, -- space sensitive 😅
 	{ rule = { class = "firefox" }, properties = { screen = 1, tag = "7. ", switchtotag = true } },
-	{ rule = { class = "Pcmanfm" }, properties = { screen = 1, tag = "3. ", tiling = true } },
+	{ rule = { class = "Pcmanfm" }, properties = { screen = 1, tag = "3. ", switchtotag = true , tiling = true } },
 	{
 		rule = { name = "ranger" },
 		properties = { titlebars_enabled = false, floating = true, width = 1080, height = 720, x = 500, y = 200 },
 	},
 	{ rule = { class = "mpv" }, properties = { floating = true, switchtotag = true, screen = 1, tag = "6. " } },
-	{ rule = { class = "code" }, properties = { switchtotag = true, screen = 1, tag = "4.뮪 " } },
+	{ rule = { class = "Code" }, properties = { switchtotag = true, screen = 1, tag = "5. " } },
 	{ rule = { class = "Polybar" }, properties = {border_color = beautiful.polybar_border } },
+	{ rule = { class = "TelegramDesktop" }, properties = { floating=true , screen = 1, tag = " " } },
 	-- { rule = { class = "mpv" }, properties = { sticky = true } },
 }
 -- }}}
